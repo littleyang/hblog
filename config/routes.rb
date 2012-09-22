@@ -1,4 +1,10 @@
 Hblog::Application.routes.draw do
+  get "user/register"
+
+  get "user/login"
+
+  get "user/logout"
+
   get "admin/index"
 
   root :to =>"post#index"
