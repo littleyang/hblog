@@ -1,12 +1,5 @@
 Hblog::Application.routes.draw do
-  get "user/register"
-
-  get "user/login"
-
-  get "user/logout"
-
-  get "admin/index"
-
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   root :to =>"post#index"
   #get "post/index"
   #get "post/comment"

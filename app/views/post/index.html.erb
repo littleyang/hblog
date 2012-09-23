@@ -9,7 +9,8 @@
         <label>caregory:<%= article.category.categoryName %></label>
         <label>comment:<%= article.comment.count %></label>
       </span>
-      <p><%= article.content%></h3>
+      <p><%=raw markdown(raw (coderay(article.content))) %></p>
+      <p><%= article.content %>
     <div>Tags:<% article.tags.each do |tag| %>
         <span><%= tag.name %></span>
       <% end %>
@@ -17,4 +18,4 @@
   <% end %>
 </div>
 <%end%>
-
+<%=raw calendar(:year=>(Time.zone || Time).now.year, :month =>(Time.zone || Time).now.month, :table_class => "calendar") %>

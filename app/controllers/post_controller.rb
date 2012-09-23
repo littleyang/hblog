@@ -5,7 +5,7 @@ class PostController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @articles }
-    end
+      end
   end
 
   def comment

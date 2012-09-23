@@ -1,3 +1,50 @@
 // Place all the styles related to the post controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.CodeRay{
+	background-color: black;
+  border: 1px solid black;
+  color: #E6E0DB;
+  padding: 1px 2px;
+  overflow: auto;
+  font-size: 12px;
+  margin: 12px 0;
+  text-align: left;
+	text-indent:1em;
+
+}
+.CodeRay .code pre { 
+		background: #002B36;
+		color: #EEEEDD; border-radius: 6px;
+		font-family: 'Bitstream Vera Sans Mono', 'Courier New', monospace;
+		font-size: 14px;
+		line-height:15px;
+		padding:5px;
+		overflow:auto;
+		margin:0px;
+
+}
+
+.CodeRay .code pre .line-numbers { padding-right:1em }
+.CodeRay .code pre .line-numbers a { color: #2f5f6b}
+.CodeRay .tag { color: #16988e }
+.CodeRay .class { color: #adff2f;font-weight: bold }
+.CodeRay .keyword { color: #b58900 }
+.CodeRay .function,
+.CodeRay .type,
+.CodeRay .constant{ color: #ff3300}
+.CodeRay .key { color: #16988e }
+.CodeRay .constant,
+.CodeRay .attribute-name { color: #657b83 }
+.coderay .string  { color: #2aa198 }
+.CodeRay .comment { color: #657b83; font-style: italic; }
+.CodeRay .content { color: #adff2f; }
+.CodeRay .symbol,
+.CodeRay .predefined-constant,
+.CodeRay .value{ color: #adff2f; }
+.CodeRay .pseudo-class { color:yellow; }
+.CodeRay .constant { font-weight: bold; }
