@@ -16,7 +16,7 @@
               </ul>
             </div>
             <div class="article">
-              <%= truncate(article.content,:length=>900)%>
+              <%= raw markdown(raw coderay(truncate(article.content,:length=>900)))%>
             </div>
             <div class="subtag" style="margin-left:15px">
             <table>
