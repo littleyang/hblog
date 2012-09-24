@@ -1,35 +1,155 @@
-// Place all the styles related to the post controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-// Place all the styles related to the articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+html, body {
+    background-color: #eee;
+  }
+.box {
+  background-color: #d9edf7;
+  padding:10px;
+  width: 240px;
+  margin: 0 0 20px 0; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: 0 0px 2px rgba(0,0,0,.1);
+  box-shadow: 0 0px 2px rgba(0,0,0,.05);
+  h2.title {
+    font-size: 14px;
+    margin:0 -10px; padding:0 10px; margin-bottom:8px;
+    vertical-align:center;
+    color:#999; line-height:100%;
+    border-bottom:1px solid #ddd; padding-bottom:8px;
+  }
+  ul{
+    margin-left: 5px;
+    li{
+      margin: 5px 5px;
+      padding: 3px,6px;
+    }
+    a:link {
+        text-decoration: none;
+      }
+    a:visited {
+        text-decoration: none;
+      }
+    a:hover {
+        text-decoration: none;
+      }
+    a:active {
+        text-decoration: none;
+      }
+    }
+}
+ .tags{
+     ul {
+       margin: 0;           
+       list-style: none;    
+       li {
+           display: inline;   
+           margin: 0;         
+           padding: 0;        
+           a {
+             display: inline-block;          
+             margin-right: 3px;
+             margin-bottom: 6px;
+             padding: 2px 10px;
+             color: #778087;  
+             text-decoration: none;          
+             background-color: #f5f5f5;      
+             -moz-border-radius: 3px;       
+             -webkit-border-radius: 3px;     
+             border-radius: 3px;
+             &:hover {
+                color: white;  
+                background-color: #99a;         
+               }
+             }
+           }
+         }
+       }
+
+.content {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px 10px 0; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+.subtag{
+  ul{
+    margin:0px; padding:0px;
+    li {
+      font-size: 14px;
+      display: inline;
+      margin:10px;
+      padding:5px;
+
+    }
+  }
+  span{
+    padding: 1px 10px 1px 10px;
+    margin: 2px,2px,2px,2px;
+  }
+
+}
+.article{
+  margin-top: 10px;
+  background-color: #eee;
+  font-size: 16px;
+  padding: 10px 6px 10px 10px;
+  line-height: 1.8;
+  text-indent: 1.5em;
+  margin-bottom: 13px;
+   -webkit-border-radius: 3px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+.tags{
+
+}
+.post p, .about p {
+  text-indent: 2em;
+  font-size:14px;
+  line-height: 1.8;
+}
+h1.title {
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+  font-size: 20px;
+  text-indent: 0.5em;
+  line-height: 1.5;
+  border-bottom: 1px solid #eee;
+}
 
 .CodeRay{
-	background-color: black;
+  background-color: black;
   border: 1px solid black;
   color: #E6E0DB;
-  padding: 1px 2px;
+  padding:  1px 2px;
   overflow: auto;
   font-size: 12px;
   margin: 12px 0;
   text-align: left;
-	text-indent:1em;
-
+  text-indent:1em;
 }
 .CodeRay .code pre { 
-		background: #002B36;
-		color: #EEEEDD; border-radius: 6px;
-		font-family: 'Bitstream Vera Sans Mono', 'Courier New', monospace;
-		font-size: 14px;
-		line-height:15px;
-		padding:5px;
-		overflow:auto;
-		margin:0px;
-
+  background: #002B36;
+  color: #EEEEDD; border-READMEadius: 6px;
+  font-family: 'Bitstream Vera Sans Mono', 'Courier New', marginonospace;
+  font-size: 14px;
+  line-height:15px;
+  padding:5px;
+  overflow:auto;
+  margin:0px;
 }
-
-.CodeRay .code pre .line-numbers { padding-right:1em }
+.CodeRay .code pre .line-numbers { padding-numbersright:1em }
 .CodeRay .code pre .line-numbers a { color: #2f5f6b}
 .CodeRay .tag { color: #16988e }
 .CodeRay .class { color: #adff2f;font-weight: bold }
@@ -45,6 +165,7 @@
 .CodeRay .content { color: #adff2f; }
 .CodeRay .symbol,
 .CodeRay .predefined-constant,
-.CodeRay .value{ color: #adff2f; }
 .CodeRay .pseudo-class { color:yellow; }
 .CodeRay .constant { font-weight: bold; }
+.CodeRay .value{ color: #adff2f; }
+

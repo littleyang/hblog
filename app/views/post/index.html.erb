@@ -1,22 +1,49 @@
-<% modle_class = Article %>
-<h1>Post#index</h1>
-<p>Find me in app/views/post/index.html.erb</p>
-<% if @articles %>
-  <div >
-    <% @articles.each do |article| %>
-      <h3><%= article.title %></h3>
-      <span>
-        <label>created at<%= article.created_at.to_date%></label>
-        <label>caregory:<%= article.category.categoryName %></label>
-        <label>comment:<%= article.comment.count %></label>
-      </span>
-      <p><%=raw markdown(raw (coderay(article.content))) %></p>
-      <p><%= article.content %>
-    <div>Tags:<% article.tags.each do |tag| %>
-        <span><%= tag.name %></span>
-      <% end %>
+<%= render :partial=>"postheader" %>
+<div class="container">
+<div class="container-fluid">
+<div class="row-fluid post">
+      <div class="span9">
+        <div class="alert alert-info" style="height:25px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
+        <% if @articles %>
+        <% @articles.each do |article| %>
+          <div class="content">
+            <h1 class="title"><%=link_to article.title,:action=>"view",:id=>article.id %></h3>
+            <div class="subtag">
+              <ul>
+                <li>创建于:<span class="label label-success"><%= article.created_at.to_date%></span></li>
+                <li>分类:<span class="label label-success"><%= article.category.categoryName %></span></li>
+                <li>评论:<span class="badge badge-success"><%= article.comment.count %></span></li>
+              </ul>
+            </div>
+            <div class="article">
+              <%= truncate(article.content,:length=>900)%>
+            </div>
+            <div class="subtag" style="margin-left:15px">
+            <table>
+              <tr>
+                <td>文章标签:</td>
+                <td>
+                  <div class="tags">
+                    <ul class="unstyled">
+                    <% article.tags.each do |tag| %>
+                      <li><a href=""><%= tag.name %></a></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                </td>
+              </table>
+            </div>
+          </div>
+          <% end %>
+        <%end%>
+        <%=h will_paginate @articles %>
+      </div>
+      <div class="span3">
+        <%= render :partial => "postsidebar" %>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
-<%end%>
-<%=raw calendar(:year=>(Time.zone || Time).now.year, :month =>(Time.zone || Time).now.month, :table_class => "calendar") %>
+<%= render :partial=>"postfooter" %>
+
+

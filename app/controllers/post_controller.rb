@@ -1,29 +1,20 @@
 class PostController < ApplicationController
+  layout "post"
+
+
   def index
     #@articles = Article.find(:all).to_json(:include =>[:user,:category,:tags,:comment])
-    @articles = Article.find(:all)
-
-    @post = Category.all
+    @articles = Article.paginate(:page=> params[:page]||1,:per_page=>10)
     respond_to do |format|
       format.html
       format.json { render json: @articles }
-      format.json { render json: @post }
-      end
-
+    end
   end
 
   def comment
   end
 
   def view
-  end
-
-  def add
-    @article = Article.new
-    respond_to do  |format|
-      format.html
-      format.json{ render json: @article }
-    end
   end
 
   def ArticleArch
