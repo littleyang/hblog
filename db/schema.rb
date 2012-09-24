@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924015610) do
+ActiveRecord::Schema.define(:version => 20120924090343) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -30,13 +30,23 @@ ActiveRecord::Schema.define(:version => 20120924015610) do
   end
 
   create_table "comments", :force => true do |t|
-    t.string   "nikeName"
-    t.string   "email"
-    t.string   "comment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "commentable_id",   :default => 0
+    t.string   "commentable_type", :default => ""
+    t.string   "title",            :default => ""
+    t.text     "body"
+    t.string   "subject",          :default => ""
+    t.integer  "user_id",          :default => 0,  :null => false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "article_id"
   end
+
+  add_index "comments", ["article_id"], :name => "index_comments_on_article_id"
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -78,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20120924015610) do
     t.string   "userDesc"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "email"
   end
 
 end

@@ -2,6 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require 'coderay'
+require 'acts_as_commentable_with_threading'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line

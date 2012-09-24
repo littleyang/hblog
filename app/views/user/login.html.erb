@@ -1,2 +1,50 @@
-<h1>User#login</h1>
-<p>Find me in app/views/user/login.html.erb</p>
+<%= render :partial =>"share/header" %>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span8">
+      </div>
+
+      <div class="span4">
+      </div>
+      <%= render :partial=>"share/footer" %>
+    </div>
+  </div>
+</div>
+<%= render :partial =>"share/header" %>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span8">
+        <%= form_for @user,:method =>:post,:url=>{:action=>"login"},:html=>{:class=>"form-horizontal",:id=>"userform"} do |f| %>
+          <fieldset>
+            <legend>用户登录</legend>
+            <div class="control-group">
+              <%= f.label :userName,"用户名称",:class=>"control-label" %>
+              <div class="controls">
+                <%= f.text_field :userName,:class=>"input-xlarge" %>
+              </div>
+            </div>
+             <div class="control-group">
+              <%= f.label :userPassword,"用户密码",:class=>"control-label" %>
+              <div class="controls">
+                <%= f.password_field :userPassword,:class=>"input-xlarge" %>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <%= f.submit "登录",:class=>"btn btn-success" %>
+              </div>
+            </div>
+
+            </fieldset>
+          <% end %>
+        </div>
+      </div>
+      <div class="span4">
+        <%= render :partial =>"sideinfo" %>
+      </div>
+      <%= render :partial=>"share/footer" %>
+    </div>
+  </div>
+</div>

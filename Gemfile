@@ -4,7 +4,7 @@ gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'acts_as_commentable_with_threading',:require =>'acts_as_commentable_with_threading'
 gem 'mysql2'
 gem 'acts-as-taggable-on'
 gem 'twitter-bootstrap-rails'
