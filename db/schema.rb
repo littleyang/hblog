@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924013035) do
+ActiveRecord::Schema.define(:version => 20120924015610) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -50,8 +50,9 @@ ActiveRecord::Schema.define(:version => 20120924013035) do
     t.string   "title"
     t.text     "detail"
     t.string   "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "status",     :default => false
   end
 
   create_table "taggings", :force => true do |t|
