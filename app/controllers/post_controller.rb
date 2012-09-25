@@ -1,5 +1,8 @@
 class PostController < ApplicationController
+  before_filter :get_link_list,:get_comment_list,:get_category_list,:get_tags_list
   layout "post"
+
+
   def index
     #@articles = Article.find(:all).to_json(:include =>[:user,:category,:tags,:comment])
     @articles = Article.paginate(:page=> params[:page]||1,:per_page=>10)
@@ -12,9 +15,11 @@ class PostController < ApplicationController
 
   def comment
     if request.post?
-      if session[:user_id]
-        u = User.find_by_id(session[:user_id])
-      end
+      #if session[:user_id]
+      #  u = User.find_by_id(session[:user_id])
+      #end
+      #for test u = User.first
+      u = User.first
       body = params[:comment][:body]
       nikename = params[:comment][:nikename]
       email = params[:comment][:email]
@@ -53,16 +58,28 @@ class PostController < ApplicationController
 
   protected
   def get_category_list
-    @categorys = Category.all
-    return @categorys
+    @categories = Category.all
+    #respond_to do |format|
+    #  format.json {render json: @categories}
+    #end
   end
+
   def get_comment_list
     @comments = Comment.order("created_at DESC").limit(10)
-    return @comments
+    #respond_to do |format|
+    #    format.json { render json: @comments }
+    #end
   end
   def get_link_list
     @links = Link.all
-    return @links
+    #respond_to do |format|
+    #  format.json { render json: @links }
+    #end
   end
+
+  def get_tags_list
+      @tags = Article.tag_counts_on(:tags).limit(50)
+  end
+
 
 end

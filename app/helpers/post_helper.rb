@@ -9,4 +9,6 @@ module PostHelper
     Category.all.map { |c| [c.categoryName,c.id]}
   end
 
+  include ActsAsTaggableOn::TagsHelper
+
 end

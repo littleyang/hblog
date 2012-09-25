@@ -1,7 +1,7 @@
 Hblog::Application.routes.draw do
     match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
     root :to =>"post#index"
-    match "/comment" =>"post#comment"
+    #match "/comment" =>"post#comment"
     match "/view" =>"post#view"
     match "/add"=>"post#add"
     match "/index"=>"post#index"

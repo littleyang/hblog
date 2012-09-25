@@ -11,4 +11,9 @@ class Article < ActiveRecord::Base
   belongs_to :category
   has_many :comment
 
+  def self.list_tags
+    tag_list = Tag.find(:all,:group=>'name',:order=>'name asc')
+    return tag_list
+  end
+
 end
