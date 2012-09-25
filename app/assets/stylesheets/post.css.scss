@@ -110,7 +110,7 @@ html, body {
   font-size: 16px;
   padding: 10px 6px 10px 10px;
   line-height: 1.8;
-  text-indent: 1.5em;
+  text-indent: 1em;
   margin-bottom: 13px;
    -webkit-border-radius: 3px;
   -moz-border-radius: 6px;
@@ -119,10 +119,7 @@ html, body {
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
-.tags{
-
-}
-.post p, .about p {
+post p, .about p {
   text-indent: 2em;
   font-size:14px;
   line-height: 1.8;
@@ -137,17 +134,13 @@ h1.title {
 }
 
 .CodeRay{
-  background-color: black;
-  border: 1px solid black;
-  color: #E6E0DB;
-  padding:  1px 2px;
   overflow: auto;
   font-size: 12px;
   margin: 12px 0;
   text-align: left;
   text-indent:1em;
 }
-.CodeRay .code pre { 
+.CodeRay .code pre {
   background: #002B36;
   color: #EEEEDD; border-READMEadius: 6px;
   font-family: 'Bitstream Vera Sans Mono', 'Courier New', marginonospace;
@@ -176,4 +169,3 @@ h1.title {
 .CodeRay .pseudo-class { color:yellow; }
 .CodeRay .constant { font-weight: bold; }
 .CodeRay .value{ color: #adff2f; }
-

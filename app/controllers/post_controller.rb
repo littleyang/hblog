@@ -15,7 +15,7 @@ class PostController < ApplicationController
   end
 
   def view
-    @article = Article.find_by_id(:params[:id])
+    @article = Article.find_by_id(params[:id])
     respond_to do |format|
       format.html
       format.json { render json: @article }

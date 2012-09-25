@@ -2,20 +2,7 @@
 <div class="container">
   <div class="container-fluid">
     <div class="row-fluid">
-      <div class="span8">
-      </div>
-
-      <div class="span4">
-      </div>
-      <%= render :partial=>"share/footer" %>
-    </div>
-  </div>
-</div>
-<%= render :partial =>"share/header" %>
-<div class="container">
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span8">
+      <div class="span7">
         <%= form_for @user,:method =>:post,:url=>{:action=>"login"},:html=>{:class=>"form-horizontal",:id=>"userform"} do |f| %>
           <fieldset>
             <legend>用户登录</legend>
@@ -41,7 +28,7 @@
           <% end %>
         </div>
       </div>
-      <div class="span4">
+      <div class="span5">
         <%= render :partial =>"sideinfo" %>
       </div>
       <%= render :partial=>"share/footer" %>

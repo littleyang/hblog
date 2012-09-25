@@ -3,7 +3,7 @@
 <div class="container-fluid">
 <div class="row-fluid post">
       <div class="span9">
-        <div class="alert alert-info" style="height:25px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
+        <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
         <% if @articles %>
         <% @articles.each do |article| %>
           <div class="content">
@@ -16,7 +16,7 @@
               </ul>
             </div>
             <div class="article">
-              <%= truncate(article.content,:length=>900)%>
+              <%= raw markdown(raw coderay(truncate(article.content,:length=>900)))%>
             </div>
             <div class="subtag" style="margin-left:15px">
             <table>
