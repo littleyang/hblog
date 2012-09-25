@@ -1,0 +1,26 @@
+<%= form_for :comment,:method =>:post,:url=>{:action=>"comment"},:html=>{:class=>"form-horizontal",:id=>"commentform"} do |f| %>
+ <fieldset>
+ <div class="control-group">
+ <%= f.label :nikename,"昵称",:class=>"control-label" %>
+   <div class="controls">
+     <%= f.text_field :nikename,:class=>"input-medium" %>
+   </div>
+ </div>
+ <div class="control-group">
+  <%= f.label :email,"email",:class=>"control-label" %>
+   <div class="controls">
+    <%= f.text_field :email,:class=>"input-medium" %>
+  </div>
+</div>
+<div class="control-group">
+  <%= f.label :body,"评论",:class=>"control-label" %>
+   <div class="controls">
+     <%= f.text_area :body,:class=>"input-xxlarge",:rows=>4,:cols=>100 %>
+  </div>
+</div>
+<div class="control-group">
+  <div class="controls">
+    <%= f.button "评论",:name=>"id",:vaule=>@article.id,:class=>"btn btn-success"%>
+  </div>
+</div>
+<% end %>

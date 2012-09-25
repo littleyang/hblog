@@ -4,6 +4,8 @@ class Comment < ActiveRecord::Base
   validates_presence_of :body
   validates_presence_of :user
   validates_presence_of :article
+  validates_presence_of :nikename
+  validates_presence_of :email
 
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
@@ -18,10 +20,12 @@ class Comment < ActiveRecord::Base
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
   # example in readme
-  def self.build_from(obj, user_id, comment)
+  def self.build_from(obj,user_id,nikename,email, comment)
     c = self.new
     c.commentable_id = obj.id
     c.commentable_type = obj.class.base_class.name
+    c.nikename=nikename
+    c.email=email
     c.body = comment
     c.user_id = user_id
     c.article_id = obj.id

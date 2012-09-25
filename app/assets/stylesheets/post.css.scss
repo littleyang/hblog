@@ -12,7 +12,7 @@ html, body {
 .box {
   background-color: #d9edf7;
   padding:10px;
-  width: 240px;
+  width: auto;
   margin: 0 0 20px 0; /* negative indent the amount of the padding to maintain the grid system */
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -169,3 +169,86 @@ h1.title {
 .CodeRay .pseudo-class { color:yellow; }
 .CodeRay .constant { font-weight: bold; }
 .CodeRay .value{ color: #adff2f; }
+
+#replies {
+  padding-bottom:0px;
+  .reply {
+    .deleted {
+      color:#aaa;
+      text-decoration: line-through;
+      font-size:12px; text-align:center;
+    }
+    &.light { background:#F7F2FC; }
+    &.popular { background:#fffce9; }
+    border-top:1px solid #DDD; padding:8px 10px; margin:0 -10px;
+    .face { padding-right:8px; width:48px; margin-left:0; }
+    .infos { padding-left:58px; }
+    .info {
+      font-size:14px;
+      color:#049cdb; height:20px;
+      a:link,
+      a:visited { color:#999; }
+      .name {
+        float:left;
+        a { text-decoration:underline; margin-right:8px; }
+      }
+      .opts {
+        float:right; text-align:right;
+        a { margin-left:5px; }
+        a:hover { text-decoration:none; }
+        i.icon { margin-bottom:-1px; }
+      }
+      a.edit { display:none; }
+      a.reply_link img { vertical-align:middle;}
+    }
+    .body {
+      img { max-width:622px;}
+      }
+    }
+  }
+#replies .reply .body {
+  position:relative;
+  line-height:160%; 
+  font-size:16px;
+  font-weight:bold;
+
+  text-overflow: ellipsis; word-wrap: break-word;
+  p { 
+      font-size:16px; 
+      line-height:160%; 
+      margin-bottom:10px;  }
+  blockquote {
+    p { font-size:13px; color:#666; font-weight:normal; line-height:150%; }
+  }
+  code { margin:0 2px; font-family:Monaco,Menlo, "Courier New", monospace;}
+  pre { font-family:Monaco,Menlo,"Courier New", monospace; }
+  a:link, a:visited { font-size:13px; color:#0069D6; text-decoration: none; }
+  a:hover { text-decoration: underline; color:#00438A; }
+  a.at_floor { color:#376B43; }
+  a.at_user {
+    color:#333; font-weight:bold;
+    i { color:#777; }
+  }
+  h4 { font-weight:bold; font-size:15px; line-height:100%; margin:0; color:#222; margin-top:20px; border-left:15px solid #eee; padding-left:5px; margin-bottom:8px;  }
+  strong { color:#000; }
+  ul,
+  ol {
+    list-style-position: inside;
+    margin:0;
+    padding:5px 14px;
+    p { margin:0; }
+    li { line-height:160%; color:#333; font-size:13px; }
+  }
+  img { vertical-align: top; }
+}
+
+
+
+
+
+
+
+
+
+
+

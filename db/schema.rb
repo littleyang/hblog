@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924090343) do
+ActiveRecord::Schema.define(:version => 20120925072727) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -35,13 +35,15 @@ ActiveRecord::Schema.define(:version => 20120924090343) do
     t.string   "title",            :default => ""
     t.text     "body"
     t.string   "subject",          :default => ""
-    t.integer  "user_id",          :default => 0,  :null => false
+    t.integer  "user_id",          :default => 0,       :null => false
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.string   "article_id"
+    t.string   "nikename",         :default => "kitty"
+    t.string   "email"
   end
 
   add_index "comments", ["article_id"], :name => "index_comments_on_article_id"
@@ -65,9 +67,11 @@ ActiveRecord::Schema.define(:version => 20120924090343) do
     t.boolean  "status",     :default => false
   end
 
-  create_table "jokes", :force => true do |t|
+  create_table "links", :force => true do |t|
     t.string   "title"
-    t.text     "content"
+    t.string   "url"
+    t.string   "linkDesc"
+    t.string   "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

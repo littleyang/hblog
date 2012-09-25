@@ -1,2 +1,92 @@
-<h1>Post#view</h1>
-<p>Find me in app/views/post/view.html.erb</p>
+<%= render :partial =>"share/header" %>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="row-fluid post">
+      <div class="span9">
+        <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
+        <% if @article %>
+          <div class="content">
+            <h1 class="title"><%=link_to @article.title,:action=>"view",:id=>@article.id %></h3>
+            <div class="subtag">
+              <ul>
+                <li>创建于:<span class="label label-success"><%= @article.created_at.to_date%></span></li>
+                <li>分类:<span class="label label-success"><%= @article.category.categoryName %></span></li>
+                <li>评论:<span class="badge badge-success"><%= @article.comment.count %></span></li>
+              </ul>
+            </div>
+            <div class="article">
+              <%= raw markdown(raw coderay(@article.content))%>
+            </div>
+            <div class="subtag" style="margin-left:15px">
+            <table>
+              <tr>
+                <td>文章标签:</td>
+                <td>
+                  <div class="tags">
+                    <ul class="unstyled">
+                    <% @article.tags.each do |tag| %>
+                      <li><%=link_to tag.name,:action=>"list_with_tag",:tag=>tag.name %></a></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                </td>
+              </table>
+            </div>
+            <div id="replies" class="box" style="margin-top:10px;background-color:#eee">
+              <h5>所有评论</h5>
+              <% for comment in @article.comment%>
+              <div class="reply">
+                <div class="pull-left face"><%= image_tag("reply.png") %> </div>
+                <div class="infos">
+                  <div class="info">
+                    <span class="name"><%= comment.nikename %>-------@<%= (comment.created_at).to_s(:short) %></span>
+                  </div>
+                <div class="body">
+                  <p> <%= raw markdown(raw coderay(comment.body)) %></p>
+                </div>
+              </div>
+              </div>
+            <% end %>
+          </div>
+             <div class="box" style="background-color:#eee">
+               <h5 class="title">我要评论</h5>
+               <%= form_for :comment,:method =>:post,:url=>{:action=>"comment"},:html=>{:class=>"form-horizontal",:id=>"commentform"} do |f| %>
+                 <fieldset>
+                   <div class="control-group">
+                     <%= f.label :nikename,"昵称",:class=>"control-label" %>
+                     <div class="controls">
+                       <%= f.text_field :nikename,:class=>"input-medium" %>
+                     </div>
+                   </div>
+                   <div class="control-group">
+                     <%= f.label :email,"email",:class=>"control-label" %>
+                     <div class="controls">
+                       <%= f.text_field :email,:class=>"input-medium" %>
+                     </div>
+                    </div>
+                    <div class="control-group">
+                      <%= f.label :body,"评论",:class=>"control-label" %>
+                      <div class="controls">
+                        <%= f.text_area :body,:class=>"input-xxlarge",:rows=>4,:cols=>100 %>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <div class="controls">
+                        <%= f.button "评论",:name=>"id",:value=>@article.id,:class=>"btn btn-success"%>
+                      </div>
+                    </div>
+                  <% end %>
+             </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="span3">
+        <%= render :partial => "postsidebar" %>
+      </div>
+
+      <%= render :partial=>"share/footer" %>
+    </div>
+  </div>
+</div>
+

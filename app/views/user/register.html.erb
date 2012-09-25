@@ -3,7 +3,10 @@
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="span7">
-        <%= form_for @user,:method =>:post,:url=>{:action=>"register"},:html=>{:class=>"form-horizontal",:id=>"userform"} do |f| %>
+        <% if flash[:notice]||flash[:error]%>
+          <div class="alert alert-error"><%= flash[:notice]||flash[:error] %></div>
+        <% end %>
+        <%= form_for :user,:method =>:post,:url=>{:action=>"register"},:html=>{:class=>"form-horizontal",:id=>"userform"} do |f| %>
           <fieldset>
             <legend>用户注册</legend>
             <div class="control-group">
