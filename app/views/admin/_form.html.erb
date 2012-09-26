@@ -1,9 +1,33 @@
-<%= form_for @article  do |f| %>
-  <%= f.label :title %><br/>
-  <%= f.text_field :title %><br/>
-  <%= f.label :content %><br/>
-  <%= f.text_area :content %><br/>
-  <%= f.label :category %>
-  <%= f.select :category_id,category_options %>
-  <%= f.submit %>
+<%= form_for :article,:method=>:post,:url=>"addArticle",:authenticity_token => false,:html=>{:class=>"form-horizontal",:id=>"article"} do |f| %>
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :title,"标题",:class=>"control-label" %>
+      <div class="controls">
+        <%= f.text_field :title,:class=>"input-large" %>
+      </div>
+    </div>
+  <div class="control-group">
+    <%= f.label :content,"内容",:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_area :content,:class=>"input-xxlarge",:rows=>23,:cols=>200 %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :category,"分类",:class=>"control-label" %>
+    <div class="controls">
+      <%= f.select :category_id,category_options %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :category,"状态",:class=>"control-label" %>
+    <div class="controls">
+      <%= f.select :status,category_options %>
+    </div>
+  </div>
+   <div class="control-group">
+    <div class="controls">
+      <%= f.submit "提交",:class=>"btn btn-success" %>
+    </div>
+  </div>
+ </fieldset>
 <% end %>

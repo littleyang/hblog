@@ -1,0 +1,46 @@
+<%= render :partial=>"header" %>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid post">
+      <div class="span2">
+        <%= render :partial => helper_check_permission(1) %>
+      </div>
+      <div class="span10">
+        <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
+        <%= form_for :article,:method=>:post,:url=>"addArticle",:authenticity_token => false,:html=>{:class=>"form-horizontal",:id=>"article"} do |f| %>
+          <fieldset>
+            <div class="control-group">
+              <%= f.label :title,"标题",:class=>"control-label" %>
+              <div class="controls">
+                <%= f.text_field :title,:class=>"input-large" %>
+              </div>
+            </div>
+  <div class="control-group">
+    <%= f.label :content,"内容",:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_area :content,:class=>"input-xxlarge",:rows=>23,:cols=>200 %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :category,"分类",:class=>"control-label" %>
+    <div class="controls">
+      <%= f.select :category_id,category_options %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :category,"状态",:class=>"control-label" %>
+    <div class="controls">
+      <%= f.select :status,category_options %>
+    </div>
+  </div>
+   <div class="control-group">
+    <div class="controls">
+      <%= f.submit "提交",:class=>"btn btn-success" %>
+    </div>
+  </div>
+ </fieldset>
+<% end %>     </div>
+    </div>
+  </div>
+</div>
+<%= render :partial=>"footer" %>

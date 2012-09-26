@@ -326,7 +326,44 @@ h1.title {
     }
   }
 }
-
+.usidebar {
+  background-color: #d9edf7;
+  padding:10px;
+  width: auto;
+  margin: 0 0 0px 0; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: 0 0px 2px rgba(0,0,0,.1);
+  box-shadow: 0 0px 2px rgba(0,0,0,.05);
+  h2.title {
+    font-size: 14px;
+    margin:0 -10px; padding:0 10px; margin-bottom:8px;
+    vertical-align:center;
+    color:#999; line-height:100%;
+    border-bottom:1px solid #ddd; padding-bottom:8px;
+  }
+  ul{
+    margin-left: 5px;
+    li{
+      margin: 5px 5px;
+      padding: 3px,6px;
+    }
+    a:link {
+        text-decoration: none;
+      }
+    a:visited {
+        text-decoration: none;
+      }
+    a:hover {
+        text-decoration: none;
+      }
+    a:active {
+        text-decoration: none;
+      }
+    }
+}
 
 
 

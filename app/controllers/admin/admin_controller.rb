@@ -1,5 +1,7 @@
 class Admin::AdminController < ApplicationController
   before_filter :should_login
+  layout "admin"
+
   def index
     #for the index page,to list some info about site,include comment/recent post/and some other info
 

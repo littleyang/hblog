@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925072727) do
+ActiveRecord::Schema.define(:version => 20120926043141) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -67,13 +67,6 @@ ActiveRecord::Schema.define(:version => 20120925072727) do
     t.boolean  "status",     :default => false
   end
 
-  create_table "jokes", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "links", :force => true do |t|
     t.string   "title"
     t.string   "url"
@@ -104,9 +97,10 @@ ActiveRecord::Schema.define(:version => 20120925072727) do
     t.string   "userName"
     t.string   "userPassword"
     t.string   "userDesc"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "email"
+    t.string   "permission",   :default => "2"
   end
 
 end

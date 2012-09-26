@@ -15,5 +15,4 @@ class Article < ActiveRecord::Base
     tag_list = Tag.find(:all,:group=>'name',:order=>'name asc')
     return tag_list
   end
-
 end

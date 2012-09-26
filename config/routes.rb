@@ -11,6 +11,7 @@ Hblog::Application.routes.draw do
     resources :articles
 
     #admin user controller
+    match "/u/index"=>"admin#index"
     match "/a/addArticle"=>"admin#add_article"
     match "/a/modifyArticle"=>"admin#modify_article"
     match "/u/userMan"=>"admin#user_man"
