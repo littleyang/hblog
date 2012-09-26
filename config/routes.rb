@@ -9,6 +9,16 @@ Hblog::Application.routes.draw do
     match "/TagsArch" => "post#tags_arch"
     match "/AboutMe"=>"post#about_me"
     resources :articles
+
+    #admin user controller
+    match "/a/addArticle"=>"admin#add_article"
+    match "/a/modifyArticle"=>"admin#modify_article"
+    match "/u/userMan"=>"admin#user_man"
+    match "/c/commentMan"=>"admin#comment_man"
+    match "/l/linkMan"=>"admin#link_man"
+    match "/s/siteSet"=>"admin#site_set"
+
+
     # The priority is based upon order of creation:
     # first created -> highest priority.
     # Sample of regular route:
