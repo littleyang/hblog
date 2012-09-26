@@ -20,27 +20,28 @@ class AdminController < ApplicationController
     #    flash[:notice] = "successfully"
     #  end
    #end
-    if request.post?
-      article = Artilce.new
-      article.title = params[:article][:title]
-      article.content = params[:article][:content]
-      article.user = @current_user
-      if article.save
-        redirect_to :action=>"article_man"
-      end
-      end
+   # if request.post?
+   #   article = Artilce.new
+   #   article.title = params[:article][:title]
+   #   article.content = params[:article][:content]
+   #   article.user = @current_user
+   #   if article.save
+   #     redirect_to :action=>"article_man"
+   #   end
+   #   end
+    @article = Article.new
+    respond_to do |format|
+      format.html
+      format.json {render json: @article }
+    end
 
   end
 
   def save_article
-      if request.post?
-      @article = Artilce.new
-      @article.title = params[:article][:title]
-      @article.content = params[:article][:content]
+      @article = Artilce.new(params[:article])
       @article.user = @current_user
       if @article.save
         redirect_to :action=>"article_man"
-      end
       end
   end
   def article_man

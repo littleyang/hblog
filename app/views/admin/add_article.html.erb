@@ -7,7 +7,7 @@
       </div>
       <div class="span10">
         <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
-        <%= form_for :article,:method=>:post,:url=>"addArticle",:authenticity_token => false,:html=>{:class=>"form-horizontal",:id=>"article"} do |f| %>
+        <%= form_for @article,:method=>:post,:url=>{:action=>"save_article"},:authenticity_token => false,:html=>{:class=>"form-horizontal",:id=>"article"} do |f| %>
           <fieldset>
             <div class="control-group">
               <%= f.label :title,"标题",:class=>"control-label" %>
@@ -27,13 +27,7 @@
       <%= f.select :category_id,category_options %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :category,"状态",:class=>"control-label" %>
-    <div class="controls">
-      <%= f.select :status,category_options %>
-    </div>
-  </div>
-   <div class="control-group">
+     <div class="control-group">
     <div class="controls">
       <%= f.submit "提交",:class=>"btn btn-success" %>
     </div>
