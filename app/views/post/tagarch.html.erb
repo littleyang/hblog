@@ -1,0 +1,31 @@
+<%= render :partial =>"share/header" %>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span7">
+        <% if flash[:notice] %>
+          <div class="alert alert-error"><%= flash[:notice] %></div>
+        <% end %>
+        <legend>所有标签归档</legend>
+          <div class="tagarch box">
+            <h2 class="title">标签统计</h2>
+            <% if @tags %>
+              <ul class="unstyle">
+                <%for tag in @tags %>
+                  <li>
+                    <span><%= count_tag_article(tag.name) %></span>
+                    <%= link_to tag.name,:action=>"list_with_tag",:tag=>tag.name %>
+                  </li>
+                <% end %>
+              <% end %>
+            </div>
+          </div> 
+
+        </div>
+      </div>
+      <div class="span5">
+      </div>
+      <%= render :partial=>"share/footer" %>
+    </div>
+  </div>
+</div>

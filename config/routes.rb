@@ -5,6 +5,9 @@ Hblog::Application.routes.draw do
     match "/view" =>"post#view"
     match "/add"=>"post#add"
     match "/index"=>"post#index"
+    match "/CategoryArch"=>"post#category_arch"
+    match "/TagsArch" => "post#tags_arch"
+    match "/AboutMe"=>"post#about_me"
     resources :articles
     # The priority is based upon order of creation:
     # first created -> highest priority.

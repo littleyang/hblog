@@ -1,0 +1,31 @@
+<%= render :partial =>"share/header" %>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span7">
+        <legend>所有文章分类归档</legend>
+        <% if flash[:notice] %>
+          <div class="alert alert-error"><%= flash[:notice] %></div>
+        <% end %>
+        <div class="kindarch">
+          <h2 class="title">所有分类统计</h2>
+          <% if @categories %>
+            <ul class="unstyled">
+              <% for category in @categories %>
+                <li>
+                  <%= link_to category.categoryName,:action=>"list_with_category",:id=>category.id %>
+                  <span class="badge badge-success"><%= category.article.count %><span>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </div>
+        </div>
+        </div>
+      </div>
+      <div class="span5">
+      </div>
+      <%= render :partial=>"share/footer" %>
+    </div>
+  </div>
+</div>

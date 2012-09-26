@@ -11,4 +11,9 @@ module PostHelper
 
   include ActsAsTaggableOn::TagsHelper
 
+  def count_tag_article(name)
+      count = Article.tagged_with(name).count
+      return count
+  end
+
 end

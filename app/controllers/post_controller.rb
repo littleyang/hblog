@@ -40,7 +40,17 @@ class PostController < ApplicationController
     end
   end
 
-  def ArticleArch
+  def tags_arch
+    @tags = Article.tag_counts_on(:tags)
+    render :template=>'post/tagarch'
+  end
+
+  def category_arch
+      @categories = Category.all
+      render :template=>'post/catearch'
+  end
+
+  def about_me
 
   end
 
