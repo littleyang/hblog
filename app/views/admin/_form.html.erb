@@ -1,33 +1,25 @@
-<%= form_for :article,:method=>:post,:url=>"addArticle",:authenticity_token => false,:html=>{:class=>"form-horizontal",:id=>"article"} do |f| %>
-  <fieldset>
-    <div class="control-group">
-      <%= f.label :title,"标题",:class=>"control-label" %>
-      <div class="controls">
-        <%= f.text_field :title,:class=>"input-large" %>
-      </div>
+<%= form_for @article  do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
     </div>
-  <div class="control-group">
-    <%= f.label :content,"内容",:class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_area :content,:class=>"input-xxlarge",:rows=>23,:cols=>200 %>
-    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
   </div>
-  <div class="control-group">
-    <%= f.label :category,"分类",:class=>"control-label" %>
-    <div class="controls">
-      <%= f.select :category_id,category_options %>
-    </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
   </div>
-  <div class="control-group">
-    <%= f.label :category,"状态",:class=>"control-label" %>
-    <div class="controls">
-      <%= f.select :status,category_options %>
-    </div>
+  <div class="actions">
+    <%= f.submit %>
   </div>
-   <div class="control-group">
-    <div class="controls">
-      <%= f.submit "提交",:class=>"btn btn-success" %>
-    </div>
-  </div>
- </fieldset>
 <% end %>
