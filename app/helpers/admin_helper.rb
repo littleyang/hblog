@@ -14,5 +14,9 @@ module AdminHelper
     end
   end
 
+  def status_options
+
+  end
+
 
 end

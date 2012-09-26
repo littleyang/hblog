@@ -34,15 +34,18 @@ class AdminController < ApplicationController
       format.html
       format.json {render json: @article }
     end
-
   end
 
   def save_article
-      @article = Artilce.new(params[:article])
-      @article.user = @current_user
+       @article = Article.new(params[:article])
       if @article.save
-        redirect_to :action=>"article_man"
+        redirect_to  :action=>"article_man",:controller=>"admin"
+        flash[:notice] = "you have successfully post #{@article.title}"
+      else
+        format.html { render action: "add_article",:controller=>"admin" }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
+
   end
   def article_man
 
@@ -115,8 +118,44 @@ class AdminController < ApplicationController
   def user_man
 
   end
+  
+  def new
+    @article = Article.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @article }
+    end
+  end
 
-  protected
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def create
+    @article = Article.new(params[:article])
+      if @article.save
+        redirect_to :action=>"article_man"
+        flash[:notice] = "you have successfully post #{@article.title}"
+      else
+        format.html { render action: "new" }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    respond_to do |format|
+      if @article.update_attributes(params[:article])
+          redirect_to :action=>"article_man"
+          flash[:notice]="you have successfully update the article #{@article.title}"
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+   protected
   
   def should_login
     unless session[:user_id]

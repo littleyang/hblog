@@ -8,10 +8,11 @@ Hblog::Application.routes.draw do
     match "/CategoryArch"=>"post#category_arch"
     match "/TagsArch" => "post#tags_arch"
     match "/AboutMe"=>"post#about_me"
-    resources :articles
+    #resources :articles
 
     #admin user controller
     match "/u/index"=>"admin#index"
+    match "/a/articleman"=>"admin#article_man"
     match "/a/addArticle"=>"admin#add_article"
     match "/a/modifyArticle"=>"admin#modify_article"
     match "/u/userMan"=>"admin#user_man"

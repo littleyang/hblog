@@ -7,33 +7,53 @@
       </div>
       <div class="span10">
         <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
+        <%= form_for :article,:url=>{:action=>:save_article},:html=>{:class=>"form-horizontal"}  do |f| %>
+         <% if @article.errors.any? %>
+            <div id="error_explanation">
+            <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+            <ul>
+              <% @article.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <legend>编辑博客</legend>
+        <fieldset>
+          <div class="control-group">
+            <label class="control-label">标题</label>
+            <div class="controls">
+              <%= f.text_field :title,:class=>"input input-xlarge" %>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">内容</label>
+            <div class="controls">
+              <%= f.text_area :content,:class=>"input input-xxlarge",:rows=>23,:cols=>200 %>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">分类</label>
+            <div class="controls">
+              <%= f.select :category_id,category_options %>
+            </div>
+          </div>
+            <div class="control-group">
+            <label class="control-label">状态</label>
+            <div class="controls">
+              <%=f.select :status,Article::STATUS,:prompt => "请选择文章状态"  %>
+            </div>
+          </div>
 
-        <%= form_for :article,:url=>{:action=>:save_article}  do |f| %>
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+          <div class="control-group">
+            <div class="controls">
+              <%= f.submit "提交",:class=>"btn btn-success"%>
+            </div>
+          </div>
 
-      <ul>
-      <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
+        </fieldset>
+    <% end %>
       </div>
     </div>
   </div>

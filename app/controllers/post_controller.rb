@@ -5,7 +5,7 @@ class PostController < ApplicationController
 
   def index
     #@articles = Article.find(:all).to_json(:include =>[:user,:category,:tags,:comment])
-    @articles = Article.paginate(:page=> params[:page]||1,:per_page=>10)
+    @articles = Article.where(:status=>1).order("created_at DESC").paginate(:page=> params[:page]||1,:per_page=>10)
     #@articles = Article.all()
     respond_to do |format|
       format.html
@@ -56,13 +56,13 @@ class PostController < ApplicationController
 
   def list_with_category
     category = Category.find_by_id(params[:id])
-    @articles = (category.article).paginate(:page=>params[:page]||1,:per_page=>10)
+    @articles = (category.article.where(:status=>1)).paginate(:page=>params[:page]||1,:per_page=>10)
     render :template => 'post/index'
   end
 
   def list_with_tag
     tag = params[:tag]
-    @articles = Article.tagged_with(tag).paginate(:page=>params[:page]||1,:per_page=>10)
+    @articles = Article.where(:status=>1).tagged_with(tag).paginate(:page=>params[:page]||1,:per_page=>10)
     render :template=>'post/index'
   end
 
