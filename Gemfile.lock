@@ -40,6 +40,8 @@ GEM
       activerecord (>= 3.0.0)
     bootstrap-will_paginate (0.0.8)
       will_paginate
+    bootstrap-wysihtml5-rails (0.3.1.1)
+      railties (>= 3.0)
     builder (3.0.3)
     calendar_helper (0.2.4)
       open4
@@ -138,6 +140,7 @@ DEPENDENCIES
   acts-as-taggable-on
   acts_as_commentable_with_threading
   bootstrap-will_paginate
+  bootstrap-wysihtml5-rails
   calendar_helper
   coderay
   coffee-rails (~> 3.2.1)

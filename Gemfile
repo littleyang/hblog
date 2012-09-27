@@ -8,6 +8,7 @@ gem 'acts_as_commentable_with_threading',:require =>'acts_as_commentable_with_th
 gem 'mysql2'
 gem 'acts-as-taggable-on'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-wysihtml5-rails'
 #gem 'event-calendar', :require => 'event_calendar'
 gem 'execjs'  
 gem 'therubyracer'

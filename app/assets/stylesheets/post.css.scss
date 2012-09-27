@@ -32,6 +32,10 @@ html, body {
     li{
       margin: 5px 5px;
       padding: 3px,6px;
+      font-size: 14px;
+      a{
+          font-size: 15px;
+      }
     }
     a:link {
         text-decoration: none;
@@ -364,8 +368,15 @@ h1.title {
       }
     }
 }
-
-
-
-
+.control-label.addform{
+  width: 80px;
+  text-align: center;
+}
+.controls.add{
+  margin-left:90px;
+  textarea{
+      width: 720px;
+      height: 600px;
+  }
+}
 
