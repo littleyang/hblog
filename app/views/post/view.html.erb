@@ -46,7 +46,7 @@
           </div>
              <div class="box" style="background-color:#eee">
                <h2 class="title">我要评论</h2>
-               <%= form_for :comment,:method =>:post,:url=>{:action=>"comment"},:html=>{:class=>"form-horizontal",:id=>"commentform"} do |f| %>
+               <%= form_for :comment,:method =>:post,:url=>{:action=>"comment",:controller=>"post"},:html=>{:class=>"form-horizontal",:id=>"commentform"} do |f| %>
                  <fieldset>
                    <div class="control-group">
                      <%= f.label :nikename,"昵称",:class=>"control-label" %>
@@ -66,9 +66,10 @@
                         <%= f.text_area :body,:class=>"input-xxlarge",:rows=>4,:cols=>100 %>
                       </div>
                     </div>
+                    <input type="hidden" name="id" id="id" value="<%= @article.id %>">
                     <div class="control-group">
                       <div class="controls">
-                        <%= f.button "评论",:type=>"submit",:name=>"id",:value=>@article.id,:class=>"btn btn-success"%>
+                        <%= f.submit "评论",:class=>"btn btn-success"%>
                       </div>
                     </div>
                   <% end %>
