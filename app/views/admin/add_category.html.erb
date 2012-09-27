@@ -1,0 +1,39 @@
+<%= render :partial=>"header" %>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid post">
+      <div class="span2">
+        <%= render :partial => helper_check_permission(1) %>
+      </div>
+      <div class="span10">
+        <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
+        <%= form_for :category,:url=>{:action=>:save_category},:html=>{:class=>"form-horizontal"},:authenticity_token =>false  do |f| %>
+          <legend>编辑分类</legend>
+          <fieldset>
+          <div class="control-group">
+            <label class="control-label addform">名称</label>
+            <div class="controls add">
+              <%= f.text_field :categoryName,:class=>"input input-xlarge" %>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label addform">描述</label>
+            <div class="controls add">
+              <%= f.text_field :categoryDesc,:class=>"input input-xxlarge" %>
+            </div>
+          </div>
+          <% if @article %>
+            <input type="hidden" name="id" value="<%= @article.id %>">
+          <% end %>
+          <div class="control-group">
+            <div class="controls add">
+              <%= f.submit "提交",:class=>"btn btn-success"%>
+            </div>
+          </div>
+        </fieldset>
+    <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render :partial=>"footer" %>

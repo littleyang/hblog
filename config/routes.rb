@@ -11,10 +11,20 @@ Hblog::Application.routes.draw do
     #resources :articles
 
     #admin user controller
-    match "/u/index"=>"admin#index"
     match "/a/articleman"=>"admin#article_man"
     match "/a/addArticle"=>"admin#add_article"
     match "/a/modifyArticle"=>"admin#modify_article"
+    match "/a/deletearticle"=>"admin#delete_article"
+    match "/a/movetodraft"=>"admin#move_to_draft"
+    match "/a/articledraft"=>"admin#draft_article"
+    ########### 
+    match "/c/mancategory"=>"admin#category_man"
+    match "/c/deletecategory"=>"admin#delete_category"
+    match "/c/addcategory"=>"admin#add_category"
+    match "/c/modifycategory"=>"admin#modify_category"
+
+    ##############r
+    match "/u/index"=>"admin#index"
     match "/u/userMan"=>"admin#user_man"
     match "/c/commentMan"=>"admin#comment_man"
     match "/l/linkMan"=>"admin#link_man"

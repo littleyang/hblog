@@ -1,6 +1,8 @@
 #utf8
 class Article < ActiveRecord::Base
   attr_accessible :category_id, :content, :title, :user_id,:status
+  attr_accessible :tag_list
+  #attr_accessor :tag_list
   
   acts_as_taggable
   acts_as_taggable_on :tags
@@ -14,9 +16,4 @@ class Article < ActiveRecord::Base
 
 
   STATUS = [["Published","1"],["Draft","2"]]
-
-  def self.list_tags
-    tag_list = Tag.find(:all,:group=>'name',:order=>'name asc')
-    return tag_list
   end
-end

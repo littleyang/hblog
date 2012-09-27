@@ -17,22 +17,17 @@
             </div>
             <div class="article">
               <%= raw markdown(raw coderay(truncate(article.content,:length=>900)))%>
-            </div>
-            <div class="subtag" style="margin-left:15px">
-            <table>
-              <tr>
-                <td>文章标签:</td>
-                <td>
+            <div class="tagbox">
+                <h6 class="title">文章标签:</h6>
                   <div class="tags">
                     <ul class="unstyled">
                     <% article.tags.each do |tag| %>
                       <li><a href=""><%= tag.name %></a></li>
                     <% end %>
                     </ul>
-                  </div>
-                </td>
-              </table>
+              </div>
             </div>
+          </div>
           </div>
           <% end %>
         <%end%>

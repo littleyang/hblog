@@ -17,12 +17,8 @@
             </div>
             <div class="article">
               <%= raw markdown(raw coderay(@article.content))%>
-            </div>
-            <div class="subtag" style="margin-left:15px">
-            <table>
-              <tr>
-                <td>文章标签:</td>
-                <td>
+            <div class="tagbox">
+              <h6>文章标签:</h6>
                   <div class="tags">
                     <ul class="unstyled">
                     <% @article.tags.each do |tag| %>
@@ -30,9 +26,8 @@
                     <% end %>
                     </ul>
                   </div>
-                </td>
-              </table>
-            </div>
+                </div>
+              </div>
             <div id="replies" class="box" style="margin-top:10px;background-color:#eee">
               <h5>所有评论</h5>
               <% for comment in @article.comment%>
@@ -84,9 +79,8 @@
       <div class="span3">
         <%= render :partial => "postsidebar" %>
       </div>
-
-      <%= render :partial=>"share/footer" %>
+      <hr>
     </div>
   </div>
 </div>
-
+<%= render :partial=>"share/footer" %>

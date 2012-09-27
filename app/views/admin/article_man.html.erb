@@ -7,13 +7,47 @@
       </div>
       <div class="span10">
         <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
+        <% if flash[:notice] %>
+          <div class="alert alert-success"><%= flash[:notice] %></div>
+        <% end %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>标题</th>
+              <th>分类</th>
+              <th>标签</th>
+              <th>摘要</th>
+              <th>时间</th>
+              <th>状态</th>
+              <th>功能</th>
+            </tr>
+            <tbody>
+              <% if @articles %>
+                <% for article in @articles %>
+                  <tr>
+                    <td><%= article.id %></td>
+                    <td><%= article.title %></td>
+                    <td><%= article.category.categoryName %></td>
+                    <td><%= show_article_tags(article.tags) %></td>
+                    <td><%= truncate(article.content,:length=>15) %></td>
+                    <td><%= article.created_at.to_s(:short) %></td>
+                    <td><%= help_show_article_status(article.status)%></td>
+                    <td>
+                      <%= link_to "查看",:action=>"view",:controller=>"post",:id=>article.id %>|
+                      <%= link_to "编辑",:action=>"modify_article",:controller=>"admin",:id=>article.id %>|
+                      <%= link_to "删除",:action=>"delete_article",:controller=>"admin",:id=>article.id %>|
+                      <% if help_show_article_status(article.status)=="published" %>
+                        <%= link_to "撤销发布",:action=>"move_to_draft",:controller=>"admin",:id=>article.id %>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
 <%= render :partial=>"footer" %>
