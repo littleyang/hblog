@@ -1,0 +1,46 @@
+<%= render :partial =>"share/header" %>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span7">
+        <% if flash[:notice]||flash[:error]%>
+          <div class="alert alert-error"><%= flash[:notice]||flash[:error] %></div>
+        <% end %>
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html=>{:class=>"form-horizontal",:id=>"signin"}) do |f| %>
+          <fieldset>
+            <legend>用户登录</legend>
+            <div class="control-group">
+              <%= f.label :login,"用户名或email",:class=>"control-label" %>
+              <div class="controls">
+                <%= f.text_field :login,:class=>"input input-xlarge" %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :password,"密码",:class=>"control-label" %>
+              <div class="controls">
+                <%= f.password_field :password,:class=>"input input-xlarge" %>
+              </div>
+            </div>
+            <% if devise_mapping.rememberable? -%>
+              <div class="control-group">
+                <div class="controls">
+                  <label><%= f.check_box :remember_me %>记住我</label>
+                </div>
+              </div>
+            <% end -%>
+            <div class="control-group">
+              <div class="controls">
+                <%= f.submit "登录",:class=>"btn btn-success" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="span5" style="margin-top:35px">
+          <div class="box">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%= render :partial=>"share/footer" %>

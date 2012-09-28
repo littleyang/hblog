@@ -1,4 +1,6 @@
 Hblog::Application.routes.draw do
+  devise_for :users
+
     match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
     root :to =>"post#index"
     #match "/comment" =>"post#comment"
@@ -24,18 +26,33 @@ Hblog::Application.routes.draw do
     match "/a/deletearticle"=>"admin#delete_article"
     match "/a/movetodraft"=>"admin#move_to_draft"
     match "/a/articledraft"=>"admin#draft_article"
+    match "/a/savearticle"=>"admin#save_article"
     ########### 
     match "/c/mancategory"=>"admin#category_man"
     match "/c/deletecategory"=>"admin#delete_category"
     match "/c/addcategory"=>"admin#add_category"
     match "/c/modifycategory"=>"admin#modify_category"
+    match "/c/savecategory"=>"admin#save_category"
 
     ##############r
     match "/u/index"=>"admin#index"
-    match "/u/userMan"=>"admin#user_man"
-    match "/c/commentMan"=>"admin#comment_man"
-    match "/l/linkMan"=>"admin#link_man"
-    match "/s/siteSet"=>"admin#site_set"
+    match "/u/useruan"=>"admin#user_man"
+    match "/s/siteset"=>"admin#site_set"
+    #####################################
+    #
+    match "/l/linkman"=>"admin#link_man"
+    match "/l/addlink"=>"admin#add_link"
+    match "/l/modifylink"=>"admin#modify_link"
+    match "/l/deletelink"=>"admin#delete_link"
+    match "/l/savelink"=>"admin#save_link"
+    ###############################
+    #
+    match "/c/commentman"=>"admin#comment_man"
+    match "/c/deletecomment"=>"admin#delete_comment"
+
+
+
+
 
 
     # The priority is based upon order of creation:

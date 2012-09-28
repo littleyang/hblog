@@ -1,4 +1,4 @@
-<%= form_for :comment,:method =>:post,:url=>{:action=>"comment"},:html=>{:class=>"form-horizontal",:id=>"commentform"} do |f| %>
+<%= form_for :comment,:method =>:post,:url=>{:action=>"comment",:controller=>"post"},:html=>{:class=>"form-horizontal",:id=>"commentform"} do |f| %>
  <fieldset>
  <div class="control-group">
  <%= f.label :nikename,"昵称",:class=>"control-label" %>
@@ -18,9 +18,12 @@
      <%= f.text_area :body,:class=>"input-xxlarge",:rows=>4,:cols=>100 %>
   </div>
 </div>
+<% if @article %>
+  <input type="hidden" name="id" id="id" value="<%= @article.id %>">
+<% end %>
 <div class="control-group">
   <div class="controls">
-    <%= f.button "评论",:name=>"id",:vaule=>@article.id,:class=>"btn btn-success"%>
+    <%= f.button "评论",:class=>"btn btn-success"%>
   </div>
 </div>
 <% end %>

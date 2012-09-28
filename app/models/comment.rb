@@ -2,7 +2,7 @@ class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
   validates_presence_of :body
-  validates_presence_of :user
+  #validates_presence_of :user
   validates_presence_of :article
   validates_presence_of :nikename
   validates_presence_of :email
@@ -31,6 +31,17 @@ class Comment < ActiveRecord::Base
     c.article_id = obj.id
     c
   end
+  def self.build_from_non_user(obj,nikename,email, comment)
+    c = self.new
+    c.commentable_id = obj.id
+    c.commentable_type = obj.class.base_class.name
+    c.nikename=nikename
+    c.email=email
+    c.body = comment
+    c.article_id = obj.id
+    c
+  end
+
 
   #helper method to check if a comment has children
   def has_children?

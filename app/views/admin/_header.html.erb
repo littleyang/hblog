@@ -8,9 +8,9 @@
           </a>
           <a class="brand" href="/index">Hblog</a>
           <div class="container nav-collapse">
-          <% if session[:user_id] %>
+          <% if user_signed_in? %>
             <ul class="nav pull-right">
-              <li><%= link_to "注销",:action=>"logout",:controller=>"user" %></li>
+              <li><%= link_to "注销", destroy_user_session_path, :method => :delete %></li>
             </ul>
           <% end %>
           </div><!--/.nav-collapse -->

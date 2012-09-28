@@ -27,7 +27,7 @@
                 <% for article in @articles %>
                   <tr>
                     <td><%= article.id %></td>
-                    <td><%= article.title %></td>
+                    <td><%= truncate(article.title,:length=>10) %></td>
                     <td><%= article.category.categoryName %></td>
                     <td><%= show_article_tags(article.tags) %></td>
                     <td><%= truncate(article.content,:length=>15) %></td>

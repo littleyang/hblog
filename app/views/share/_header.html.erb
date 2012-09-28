@@ -13,15 +13,15 @@
               <li><%= link_to "标签归档", "/TagsArch"  %></li>
               <li><%= link_to "About Me", "/AboutMe"  %></li>
             </ul>
-            <% if session[:user_id] %>
+            <% if user_signed_in? %>
             <ul class="nav pull-right">
-              <li><%= link_to "注销",:action=>"logout",:controller=>"user" %></li>
+              <li><%= link_to "注销",destroy_user_session_path, :method => :delete %></li>
               <li><%= link_to "管理",:action=>"index",:controller=>"admin" %></li>
             </ul>
           <% else %>
             <ul class="nav pull-right">
-              <li><%= link_to "登录",:action=>"login",:controller=>"user" %><li>
-              <li><%= link_to "注册",:action=>"register",:controller=>"user" %></li>
+              <li><%= link_to "登录",new_user_session_path %><li>
+              <li><%= link_to "注册",new_user_registration_path %></li>
             </ul>
           <% end %>
           </div><!--/.nav-collapse -->

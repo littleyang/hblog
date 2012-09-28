@@ -45,34 +45,7 @@
             <% end %>
           </div>
              <div class="box" style="background-color:#eee">
-               <h2 class="title">我要评论</h2>
-               <%= form_for :comment,:method =>:post,:url=>{:action=>"comment",:controller=>"post"},:html=>{:class=>"form-horizontal",:id=>"commentform"} do |f| %>
-                 <fieldset>
-                   <div class="control-group">
-                     <%= f.label :nikename,"昵称",:class=>"control-label" %>
-                     <div class="controls">
-                       <%= f.text_field :nikename,:class=>"input-medium" %>
-                     </div>
-                   </div>
-                   <div class="control-group">
-                     <%= f.label :email,"email",:class=>"control-label" %>
-                     <div class="controls">
-                       <%= f.text_field :email,:class=>"input-medium" %>
-                     </div>
-                    </div>
-                    <div class="control-group">
-                      <%= f.label :body,"评论",:class=>"control-label" %>
-                      <div class="controls">
-                        <%= f.text_area :body,:class=>"input-xxlarge",:rows=>4,:cols=>100 %>
-                      </div>
-                    </div>
-                    <input type="hidden" name="id" id="id" value="<%= @article.id %>">
-                    <div class="control-group">
-                      <div class="controls">
-                        <%= f.submit "评论",:class=>"btn btn-success"%>
-                      </div>
-                    </div>
-                  <% end %>
+               <%= render 'comment' %>
              </div>
           </div>
         <% end %>
@@ -85,3 +58,4 @@
   </div>
 </div>
 <%= render :partial=>"share/footer" %>
+

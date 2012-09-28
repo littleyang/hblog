@@ -15,20 +15,22 @@ class PostController < ApplicationController
 
   def comment
     if request.post?
-      #if session[:user_id]
-      #  u = User.find_by_id(session[:user_id])
-      #end
-      #for test u = User.first
-      u = User.first
-      body = params[:comment][:body]
-      nikename = params[:comment][:nikename]
-      email = params[:comment][:email]
-      article =Article.find_by_id(params[:id])
-      comment = Comment.build_from(article,u,nikename,email,body)
-      if comment.save
-        flash[:notice]="you have susscessfuly comment the article #{article.title}"
-        redirect_to :action=>"view",:id=>article.id and return
-      end
+        body = params[:comment][:body]
+        nikename = params[:comment][:nikename]
+        email = params[:comment][:email]
+        article =Article.find_by_id(params[:id])
+        if user_signed_in?
+          u = current_user
+          comment = Comment.build_from(article,u,nikename,email,body)
+        else
+          comment = Comment.build_from_non_user(article,nikename,email,body)
+        end
+        if comment.save
+          flash[:notice]="you have susscessfuly comment the article #{article.title}"
+          redirect_to :action=>"view",:id=>article.id and return
+        else 
+          redirect_to :action=>"index"
+        end
     end
   end
 

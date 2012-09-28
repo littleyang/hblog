@@ -1,11 +1,11 @@
 class AdminController < ApplicationController
-  #before_filter :should_login
+
+  before_filter :authenticate_user!
   layout "admin"
 
+  #before_filter :should_login
   def index
     #for the index page,to list some info about site,include comment/recent post/and some other info
-
-    session[:user_id]=1
 
   end
   #############################article_man_function#################################
@@ -22,20 +22,27 @@ class AdminController < ApplicationController
   #to save the article from the action add_article
   #adn return
   def save_article
-      if params[:id]
+      if params[:id]!=""
         @article = Article.find_by_id(params[:id])
+        if @article.update_attributes(params[:article])
+            redirect_to  :action=>"article_man",:controller=>"admin"
+            flash[:notice] = "you have successfully post #{@article.title}"
+        else
+            format.html { render action: "add_article",:controller=>"admin" }
+            format.json { render json: @article.errors, status: :unprocessable_entity }
+        end
       else
-       @article = Article.new(params[:article])
+        @article = Article.new(params[:article])
+        @article.user = current_user
+        if @article.save
+          redirect_to  :action=>"article_man",:controller=>"admin"
+          flash[:notice] = "you have successfully post #{@article.title}"
+        else
+          format.html { render action: "add_article",:controller=>"admin" }
+          format.json { render json: @article.errors, status: :unprocessable_entity }
+        end
       end
-       #@article.tags_list = params([:article][:tags])
-      if @article.save
-        redirect_to  :action=>"article_man",:controller=>"admin"
-        flash[:notice] = "you have successfully post #{@article.title}"
-      else
-        format.html { render action: "add_article",:controller=>"admin" }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-
+    #@article.tags_list = params([:article][:tags])
   end
   # list all articles in database
   def article_man
@@ -106,9 +113,13 @@ class AdminController < ApplicationController
   def save_category
     if params[:id]
       @category = Category.find_by_id(params[:id])
+      @category.categoryName = params[:category][:categoryName]
+      @category.categoryDesc = params[:category][:categoryDesc]
     else
       @category = Category.new(params[:category])
     end
+    #@category.user = @current_user
+    #@category.user = User.find_by_id(1)
     if @category.save
       redirect_to :action=>"category_man",:controller=>"admin" and return
       flash[:notice]="you have successfully added/modify category #{@category.categoryName}"
@@ -184,20 +195,55 @@ class AdminController < ApplicationController
   def active_info
 
   end
-  #links function 
+  ##################################################################################
+  #########################--------------------------------#########################
+  #########################------links function -----------#########################
+  #########################--------------------------------#########################
+  ##################################################################################
   def link_man
-
+    @links = Link.order("created_at DESC")
+    respond_to do |format|
+      format.html { render :template=>'admin/link_man' }
+      format.json { render json: @links }
+    end
   end
   def add_link
-
+    render :template=>'admin/add_link'
+    @link = Link.new
   end
   def delete_link
-
+    link =Link.find_by_id(params[:id])
+    if link.destroy
+      redirect_to :action=>"link_man",:controller=>"admin"
+      flash[:notice] = "you have successfully destroy the link #{link.title}"
+    end
   end
   def modify_link
+    #render :template => 'admin/add_link'
+    @link = Link.find_by_id(params[:id])
+    respond_to do |format|
+      format.html { render :template => 'admin/add_link'}
+      format.json { render json: @link }
+    end
 
   end
-
+  def save_link
+    if params[:id]
+      @link = Link.find_by_id(params[:id])
+      @link.title = params[:link][:title]
+      @link.linkDesc = params[:link][:linkDesc]
+      @link.url = params[:link][:url]
+    else
+      @link = Link.new(params[:link])
+    end
+    #@link.user = current_user
+    u = User.find_by_id(1)
+    @link.user = u
+    if @link.save
+      flash[:notice]="you have successfully modify or create link #{@link.title}"
+      redirect_to :action=>"link_man",:controller =>"admin"
+    end
+  end
   #to set the blog
   def site_set
 
