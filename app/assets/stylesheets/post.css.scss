@@ -139,42 +139,6 @@ h1.title {
   border-bottom: 1px solid #eee;
 }
 
-.CodeRay{
-  overflow: auto;
-  font-size: 12px;
-  margin: 12px 0;
-  text-align: left;
-  text-indent:1em;
-}
-.CodeRay .code pre {
-  background: #002B36;
-  color: #EEEEDD; border-READMEadius: 6px;
-  font-family: 'Bitstream Vera Sans Mono', 'Courier New', marginonospace;
-  font-size: 14px;
-  line-height:15px;
-  padding:5px;
-  overflow:auto;
-  margin:0px;
-}
-.CodeRay .code pre .line-numbers { padding-numbersright:1em }
-.CodeRay .code pre .line-numbers a { color: #2f5f6b}
-.CodeRay .tag { color: #16988e }
-.CodeRay .class { color: #adff2f;font-weight: bold }
-.CodeRay .keyword { color: #b58900 }
-.CodeRay .function,
-.CodeRay .type,
-.CodeRay .constant{ color: #ff3300}
-.CodeRay .key { color: #16988e }
-.CodeRay .constant,
-.CodeRay .attribute-name { color: #657b83 }
-.coderay .string  { color: #2aa198 }
-.CodeRay .comment { color: #657b83; font-style: italic; }
-.CodeRay .content { color: #adff2f; }
-.CodeRay .symbol,
-.CodeRay .predefined-constant,
-.CodeRay .pseudo-class { color:yellow; }
-.CodeRay .constant { font-weight: bold; }
-.CodeRay .value{ color: #adff2f; }
 
 #replies {
   padding-bottom:0px;
