@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row-fluid post">
       <div class="span2">
-        <%= render :partial => helper_check_permission(1) %>
+        <%= render :partial => helper_check_permission(current_user) %>
       </div>
       <div class="span10">
         <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
@@ -15,21 +15,29 @@
             <tr>
               <th>ID</th>
               <th>名称</th>
-              <th>描述</th>
-              <th>时间</th>
+              <th>内容</th>
+              <th>文章</th>
+              <th>评论人</th>
+              <th>状态</th>
+              <th></th>
+              <th>评论时间</th>
               <th>功能</th>
             </tr>
             <tbody>
-              <% if @categories %>
-                <% for category in @categories %>
+              <% if @comments %>
+                <% for comment in @comments %>
                   <tr>
-                    <td><%= category.id %></td>
-                    <td><%= category.categoryName %></td>
-                    <td><%= category.categoryDesc %></td>
-                    <td><%= category.created_at.to_s(:short) %></td>
+                    <td><%= comment.id %></td>
+                    <td><%= comment.title %></td>
+                    <td><%= truncate(comment.body,:length=>15) %></td>
+                    <td><%=link_to truncate(comment.article.title,:length=>10),:action=>"view",:controller=>"post",:id=>comment.article.id %></td>
+                    <td><%= help_show_comment_username(comment) %></td>
+                    <td><%= help_show_comment_status(comment) %><td>
+                    <td><%= comment.created_at.to_s(:short) %></td>
                     <td>
-                      <%= link_to "编辑",:action=>"modify_category",:controller=>"admin",:id=>category.id %>|
-                      <%= link_to "删除",:action=>"delete_category",:controller=>"admin",:id=>category.id %>|
+                      <%= link_to "查看",:action=>"view_comment",:controller=>"admin",:id=>comment.id %>|
+                      <%= link_to "通过",:action=>"confirm_comment",:controller=>"admin",:id=>comment.id %>|
+                      <%= link_to "删除",:action=>"delete_comment",:controller=>"admin",:id=>comment.id %>|
                     </td>
                   </tr>
                 <% end %>

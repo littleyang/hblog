@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row-fluid post">
       <div class="span2">
-        <%= render :partial => helper_check_permission(1) %>
+        <%= render :partial => helper_check_permission(current_user) %>
       </div>
       <div class="span10">
         <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
