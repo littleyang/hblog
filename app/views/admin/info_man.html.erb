@@ -15,21 +15,28 @@
             <tr>
               <th>ID</th>
               <th>名称</th>
-              <th>描述</th>
+              <th>内容</th>
+              <th>状态</th>
               <th>时间</th>
               <th>功能</th>
             </tr>
             <tbody>
-              <% if @categories %>
-                <% for category in @categories %>
+              <% if @infos %>
+                <% for info in @infos %>
                   <tr>
-                    <td><%= category.id %></td>
-                    <td><%= category.categoryName %></td>
-                    <td><%= category.categoryDesc %></td>
-                    <td><%= category.created_at.to_s(:short) %></td>
+                    <td><%= info.id %></td>
+                    <td><%= info.title %></td>
+                    <td><%= truncate(info.detail,:length=>20)%></td>
+                    <td><%= help_show_info_status(info) %></td>
+                    <td><%= info.created_at.to_s(:short) %></td>
                     <td>
-                      <%= link_to "编辑",:action=>"modify_category",:controller=>"admin",:id=>category.id %>|
-                      <%= link_to "删除",:action=>"delete_category",:controller=>"admin",:id=>category.id %>|
+                      <%= link_to "编辑",:action=>"modify_info",:controller=>"admin",:id=>info.id %>|
+                      <% if info.status %>
+                        <%= link_to "撤销",:action=>"unactive_info",:controller=>"admin",:id=>info.id %>|
+                      <% else %>
+                        <%= link_to "显示",:action=>"active_info",:controller=>"admin",:id=>info.id %>|
+                      <% end %>
+                      <%= link_to "删除",:action=>"delete_info",:controller=>"admin",:id=>info.id %>|
                     </td>
                   </tr>
                 <% end %>

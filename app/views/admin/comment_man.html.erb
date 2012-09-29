@@ -36,7 +36,11 @@
                     <td><%= comment.created_at.to_s(:short) %></td>
                     <td>
                       <%= link_to "查看",:action=>"view_comment",:controller=>"admin",:id=>comment.id %>|
-                      <%= link_to "通过",:action=>"confirm_comment",:controller=>"admin",:id=>comment.id %>|
+                      <% if comment.status %>
+                        <%= link_to "撤销",:action=>"confirm_comment",:controller=>"admin",:id=>comment.id %>|
+                      <% else %>
+                        <%= link_to "通过",:action=>"confirm_comment",:controller=>"admin",:id=>comment.id %>|
+                      <% end %>
                       <%= link_to "删除",:action=>"delete_comment",:controller=>"admin",:id=>comment.id %>|
                     </td>
                   </tr>

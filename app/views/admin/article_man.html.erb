@@ -39,6 +39,8 @@
                       <%= link_to "删除",:action=>"delete_article",:controller=>"admin",:id=>article.id %>|
                       <% if help_show_article_status(article.status)=="published" %>
                         <%= link_to "撤销发布",:action=>"move_to_draft",:controller=>"admin",:id=>article.id %>
+                      <% else %>
+                        <%= link_to "发布",:action=>"publish_article",:controller=>"admin",:id=>article.id %>
                       <% end %>
                     </td>
                   </tr>

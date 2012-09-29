@@ -27,6 +27,7 @@ Hblog::Application.routes.draw do
     match "/a/movetodraft"=>"admin#move_to_draft"
     match "/a/articledraft"=>"admin#draft_article"
     match "/a/savearticle"=>"admin#save_article"
+    match "/a/pubarticle"=>"admin#publish_article"
     ########### 
     match "/c/mancategory"=>"admin#category_man"
     match "/c/deletecategory"=>"admin#delete_category"
@@ -53,8 +54,15 @@ Hblog::Application.routes.draw do
     match "/c/viewcomment"=>"admin#view_comment"
     match "/c/confirmcomment"=>"admin#confirm_comment"
 
-
-
+    #######
+    #
+    match "/i/infoman"=>"admin#info_man"
+    match "/i/deleteinfo"=>"admin#delete_info"
+    match "/i/modifyinfo"=>"admin#modify_info"
+    match "/i/activeinfo"=>"admin#active_info"
+    match "/i/unactiveinfo"=>"admin#unactive_info"
+    match "/i/addinfo"=>"admin#add_info"
+    match "/i/saveinfo"=>"admin#save_info"
 
 
     # The priority is based upon order of creation:

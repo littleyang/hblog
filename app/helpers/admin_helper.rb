@@ -30,4 +30,12 @@ module AdminHelper
     end
   end
 
+  def help_show_info_status(info)
+    if info.status
+      return "actived"
+    else
+      return "unactive"
+    end
+  end
+
 end

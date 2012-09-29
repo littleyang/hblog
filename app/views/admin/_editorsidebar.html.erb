@@ -1,32 +1,32 @@
 <div class= "usidebar">
   <h2 class="title">博客管理</h2>
   <ul class="unstyled">
-    <li><a href="">所有文章</a></li>
-    <li><a href="">新增博客</a></li>
-    <li><a href="">info管理</a><li>
+    <li><%= link_to "所有文章",:action=>"article_man",:controller=>"admin" %></li>
+    <li><%= link_to "新增博客",:action=>"add_article",:controller=>"admin" %></li>
+    <li><%= link_to "草 稿 箱",:action=>"draft_article",:controller=>"admin" %></li>
+    <li><%= link_to "info管理",:action=>"info_man",:controller=> "admin" %></li>
+    <li><%= link_to "增加info",:action=>"add_info",:controller=>"admin" %><li>
   </ul>
 </div>
 <div class= "usidebar">
   <h2 class="title">分类管理</h2>
   <ul class="unstyled">
-    <li><a href="">所有分类</a></li>
-    <li><a href="">增加分类</a></li>
-    <li><a href="">分类归档</a></li>
+    <li><%= link_to "分类管理",:action=>"category_man",:controller=>"admin" %></li>
+    <li><%= link_to "增加分类",:action=>"add_category",:controller=>"admin" %></li>
+    <li><%= link_to "分类归档",:action=>"category_arch",:controller=>"post" %></li>
   </ul>
 </div>
 <div class="usidebar">
   <h2 class="title">连接管理</h2>
   <ul class="unstyled">
-    <li><a href="">所有连接</a></li>
-    <li><a href="">增加连接</a></li>
-    <li><a href="">sidebar管理</a></li>
+    <li><%= link_to "所有连接",:action=>"link_man",:controller=>"admin" %></li>
+    <li><%= link_to "增加连接",:action=>"add_link",:controller=>"admin" %></li>
   </ul>
 </div>
 <div class="usidebar">
   <h2 class="title">评论管理</h2>
   <ul class="unstyled">
-    <li><a href="">所有评论</a></li>
-    <li><a href="">功能管理</a></li>
+    <li><%= link_to "所有评论",:action=>"comment_man",:controller=>"admin" %></li>
+    <li><%= link_to "评论审核",:action=>"check_comment",:controller=>"admin" %></li>
   </ul>
 </div>
-

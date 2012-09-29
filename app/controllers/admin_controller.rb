@@ -13,16 +13,16 @@ class AdminController < ApplicationController
   ##################################################################################
   #to add an article
   def add_article
+      render :template=>'admin/add_article' 
       @article = Article.new
-      respond_to do |format|
-        format.html
-        format.json {render json: @article }
-      end
+      #respond_to do |format|
+      #  format.html { render :template=>'admin/add_article' }
+      #end
   end
   #to save the article from the action add_article
   #adn return
   def save_article
-      if params[:id]!=""
+      if params[:id]
         @article = Article.find_by_id(params[:id])
         if @article.update_attributes(params[:article])
             redirect_to  :action=>"article_man",:controller=>"admin"
@@ -72,8 +72,16 @@ class AdminController < ApplicationController
 
   #move an article to draft
   def move_to_draft
-    @article = Article.find_by_id(:params[:id])
+    @article = Article.find_by_id(params[:id])
     @article.status = 2
+    if @article.save
+      redirect_to :action =>"article_man",:controller=>"admin" and return
+      flash[:notice]="you had successfully to move #{@article.title} to draft!"
+    end
+  end
+  def publish_article
+    @article = Article.find_by_id(params[:id])
+    @article.status = 1
     if @article.save
       redirect_to :action =>"article_man",:controller=>"admin" and return
       flash[:notice]="you had successfully to move #{@article.title} to draft!"
@@ -113,16 +121,16 @@ class AdminController < ApplicationController
   def save_category
     if params[:id]
       @category = Category.find_by_id(params[:id])
-      @category.categoryName = params[:category][:categoryName]
-      @category.categoryDesc = params[:category][:categoryDesc]
+      if @category.update_attributes(params[:category])
+        redirect_to :action=>"category_man",:controller=>"admin" and return
+        flash[:notice]="you have successfully added/modify category #{@category.categoryName}"
+      end
     else
       @category = Category.new(params[:category])
-    end
-    #@category.user = @current_user
-    #@category.user = User.find_by_id(1)
-    if @category.save
-      redirect_to :action=>"category_man",:controller=>"admin" and return
-      flash[:notice]="you have successfully added/modify category #{@category.categoryName}"
+      if @category.save
+        redirect_to :action=>"category_man",:controller=>"admin" and return
+        flash[:notice]="you have successfully added/modify category #{@category.categoryName}"
+      end
     end
   end
   def delete_category
@@ -216,11 +224,11 @@ class AdminController < ApplicationController
   end
 
   def add_info
-    @info = Info.new
-    respond_to do |format|
-      format.hmtl { render :template=>'admin/add_info' }
-      format.json { render json: @info }
-    end
+    render :template=>'admin/add_info' 
+   # @info = Info.new
+   # respond_to do |format|
+   #   format.html { render :template=>'admin/add_info' }
+   # end
   end
   def save_info
     if params[:id]
@@ -234,6 +242,7 @@ class AdminController < ApplicationController
       end
     else
       info = Info.new(params[:info])
+      info.user = current_user
       if info.save
         redirect_to :action=>"info_man",:controller=>"admin"
         flash[:notice]="you have successfully update the info #{info.title}"
@@ -250,7 +259,7 @@ class AdminController < ApplicationController
        flash[:notice]="you have successfully update the info #{info.title}"
      end
   end
-  def midify_info
+  def modify_info
     @info = Info.find_by_id(params[:id])
     respond_to do |format|
       format.html { render :template=>'admin/add_info' }
@@ -266,6 +275,15 @@ class AdminController < ApplicationController
       flash[:notice] = "you have scuuessfully actived information #{info.title}"
     end
   end
+  def unactive_info
+    info = Info.find_by_id(params[:id])
+    info.status = false
+    if info.save
+      redirect_to :action=>"index",:controller=>"post"
+      flash[:notice] = "you have scuuessfully actived information #{info.title}"
+    end
+  end
+
   ##################################################################################
   #########################--------------------------------#########################
   #########################------links function -----------#########################

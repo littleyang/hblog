@@ -7,23 +7,23 @@
       </div>
       <div class="span10">
         <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
-        <%= form_for :category,:url=>{:action=>:save_category},:html=>{:class=>"form-horizontal"},:authenticity_token =>false  do |f| %>
-          <legend>编辑分类</legend>
+        <%= form_for :info,:url=>{:action=>:save_info,:controller=>"admin"},:html=>{:class=>"form-horizontal"}  do |f| %>
+          <legend>编辑info</legend>
           <fieldset>
           <div class="control-group">
             <label class="control-label addform">名称</label>
             <div class="controls add">
-              <%= f.text_field :categoryName,:class=>"input input-xlarge" %>
+              <%= f.text_field :title,:class=>"input input-xlarge" %>
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label addform">描述</label>
+            <label class="control-label addform">内容</label>
             <div class="controls add">
-              <%= f.text_field :categoryDesc,:class=>"input input-xxlarge" %>
+              <%= f.text_field :detail,:class=>"input input-xxlarge" %>
             </div>
           </div>
-          <% if @category %>
-            <input type="hidden" name="id" value="<%= @category.id %>">
+          <% if @info %>
+            <input type="hidden" name="id" value="<%= @info.id %>">
           <% end %>
           <div class="control-group">
             <div class="controls add">
