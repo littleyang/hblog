@@ -4,12 +4,15 @@ module PostHelper
   # get personal fellings
   # and return
   def get_infos
-    detail = Info.find_by_status(true).detail
-    if detail 
-      return detail
-    else
-      return "wating for updatting....."
-    end
+    #detail = Info.find_by_status(true).detail
+    #if detail 
+    #  return detail
+    #else
+    #  return "wating for updatting....."
+    #end
+    info = Info.random_to_show_info
+    return info.detail
+
   end
 
   # when add and modify an article\

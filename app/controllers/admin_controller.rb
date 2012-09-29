@@ -163,7 +163,7 @@ class AdminController < ApplicationController
   def comment_man
     @comments = Comment.order("created_at DESC")
     respond_to do |format|
-      format.html
+      format.html { render :template =>'admin/comment_man'}
       format.json { render json: @comments }
     end 
   end
@@ -176,24 +176,95 @@ class AdminController < ApplicationController
       end
   end
 
+  def confirm_comment
+    comment = Comment.find_by_id(params[:id])
+    comment.status = true
+    if comment.save
+      redirect_to :action =>"view",:controller =>"post",:id=>comment.article.id
+      flash[:notice] = "you have pass the comment #{ comment.title }"
+    else
+      redirect_to :action=>"comment_man",:controller=>"admin"
+      flash[:notice] = "something went wrong ! please try again "
+    end
+  end
 
-  #personal info function man
+  def view_comment
+    @comment = Comment.find_by_id(params[:id])
+    respond_to do |format|
+      format.html { render :template=>'admin/view_comment'}
+      format.json { render json: @comment }
+    end
+  end
+  def check_comment
+    @comments = Comment.find_all_by_status(false)
+    respond_to do |format|
+      format.html { render :template=>'admin/comment_man' }
+      format.json { render json: @comments }
+    end
+  end
+  ########################################################################
+  #######################----------------------------#####################
+  ##################-----personal info function man-----##################
+  #######################----------------------------#####################
+  ########################################################################
   def info_man
-
+    @infos = Info.order("created_at DESC")
+    respond_to do |format|
+      format.html { render :template=>'admin/info_man' }
+      format.json { render json: @infos }
+    end
   end
 
   def add_info
-
+    @info = Info.new
+    respond_to do |format|
+      format.hmtl { render :template=>'admin/add_info' }
+      format.json { render json: @info }
+    end
+  end
+  def save_info
+    if params[:id]
+      info = Info.find_by_id(params[:id])
+      if info.update_attributes(params[:info])
+        redirect_to :action=>"info_man",:controller=>"admin"
+        flash[:notice]="you have successfully update the info #{info.title}"
+      else
+        redirect_to :action=>"add_info",:controller=>"admin"
+        flash[:notice]="something went wrong,please try again "
+      end
+    else
+      info = Info.new(params[:info])
+      if info.save
+        redirect_to :action=>"info_man",:controller=>"admin"
+        flash[:notice]="you have successfully update the info #{info.title}"
+      else
+        redirect_to :action=>"add_info",:controller=>"admin"
+        flash[:notice]="something went wrong,please try again "
+      end
+    end
   end
   def delete_info
-
+     info = Info.find_by_id(params[:id])
+     if info.destroy
+       redirect_to :action=>"info_man",:controller=>"admin"
+       flash[:notice]="you have successfully update the info #{info.title}"
+     end
   end
   def midify_info
-
+    @info = Info.find_by_id(params[:id])
+    respond_to do |format|
+      format.html { render :template=>'admin/add_info' }
+      format.json { render json: @info }
+    end
   end
 
   def active_info
-
+    info = Info.find_by_id(params[:id])
+    info.status = true
+    if info.save
+      redirect_to :action=>"index",:controller=>"post"
+      flash[:notice] = "you have scuuessfully actived information #{info.title}"
+    end
   end
   ##################################################################################
   #########################--------------------------------#########################
@@ -253,8 +324,19 @@ class AdminController < ApplicationController
   def user_man
 
   end
-  
-  
+  def add_user
+
+  end
+  def view_user
+
+  end
+  def modify_user
+
+  end
+  def delete_user
+
+  end
+
   protected
   def should_login
     unless session[:user_id]

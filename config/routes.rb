@@ -49,7 +49,9 @@ Hblog::Application.routes.draw do
     #
     match "/c/commentman"=>"admin#comment_man"
     match "/c/deletecomment"=>"admin#delete_comment"
-
+    match "/c/checkcomment"=>"admin#check_comment"
+    match "/c/viewcomment"=>"admin#view_comment"
+    match "/c/confirmcomment"=>"admin#confirm_comment"
 
 
 

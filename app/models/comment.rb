@@ -65,4 +65,12 @@ class Comment < ActiveRecord::Base
   def self.find_commentable(commentable_str, commentable_id)
     commentable_str.constantize.find(commentable_id)
   end
+
+  def have_user?
+    if self.user_id != nil
+      return true
+    else
+      return false
+    end
+  end
 end
