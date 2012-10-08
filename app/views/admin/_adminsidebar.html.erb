@@ -12,8 +12,9 @@
 <div class= "usidebar">
   <h2 class="title">用户管理</h2>
   <ul class="unstyled">
-    <li><a href="">所有用户</a></li>
-    <li><a href="">新增用户</a></li>
+    <li><%= link_to "所有用户",:action=>"user_man",:controller=>"admin" %></li>
+    <li><%= link_to "增加用户",new_user_registration_path %></li>
+    <li><%= link_to "修改信息",edit_user_registration_path %></li>
     <li><a href="">功能管理</a></li>
   </ul>
 </div>

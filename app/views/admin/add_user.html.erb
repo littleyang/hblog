@@ -1,0 +1,63 @@
+<%= render :partial=>"header" %>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid post">
+      <div class="span2">
+        <%= render :partial => helper_check_permission(current_user) %>
+      </div>
+      <div class="span10">
+        <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
+        <%= form_for :user,:url=>{:action=>:save_user},:html=>{:class=>"form-horizontal"}  do |f| %>
+         <% if @user.errors.any? %>
+            <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <legend>编辑用户</legend>
+        <fieldset>
+          <div class="control-group">
+            <label class="control-label addform">用户名</label>
+            <div class="controls add">
+              <%= f.text_field :username,:class=>"input input-xlarge" %>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label addform">email</label>
+            <div class="controls add">
+              <%= f.text_field :email,:rows=>23,:cols=>200,:id=>"content" %>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label addform">角色</label>
+            <div class="controls add">
+              <%=f.select :permission,User::ROLES,:prompt => "请选择用户角色"  %>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label addform">备注</label>
+            <div class="controls add">
+              <%= f.text_field :userDesc,:class=>"input input-xxlarge" %>
+              <p class="help-block">用户备注信息</p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls add">
+              <%= f.submit "提交",:class=>"btn btn-success"%>
+            </div>
+          </div>
+          <% if @user %>
+            <input type="hidden" id="id" name="id" value="<%= @user.id %>">
+          <% end %>
+
+        </fieldset>
+    <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render :partial=>"footer" %>

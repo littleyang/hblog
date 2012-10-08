@@ -340,19 +340,57 @@ class AdminController < ApplicationController
 
   #to manager user who post
   def user_man
-
+    @users = User.order("created_at DESC")
+    respond_to do |format|
+      format.json { render json: @users }
+      format.html { render :template=>'admin/user_man' }
+    end
   end
   def add_user
-
-  end
-  def view_user
+  @user = User.new
+    respond_to do |format|
+      format.html { render :template=>'admin/add_user'}
+      format.json { render json: @user }
+    end
 
   end
   def modify_user
+    @user = User.find_by_id(params[:id])
+    respond_to do |format|
+      format.html { render :template=>'admin/add_user'}
+      format.json { render json: @user }
+    end
+  end
+
+  def save_user
+      if params[:id]
+      user = User.find_by_id(params[:id])
+      if user.update_attributes(params[:user])
+        redirect_to :action=>"user_man",:controller=>"admin"
+        flash[:notice]="you have successfully update the user #{user.username}"
+      else
+        redirect_to :action=>"add_user",:controller=>"admin"
+        flash[:notice]="something went wrong,please try again "
+      end
+    else
+      user = User.new(params[:user])
+      if user.save
+        redirect_to :action=>"user_man",:controller=>"admin"
+        flash[:notice]="you have successfully update the info #{user.username}"
+      else
+        redirect_to :action=>"add_user",:controller=>"admin"
+        flash[:notice]="something went wrong,please try again "
+      end
+    end
 
   end
-  def delete_user
 
+  def delete_user
+   @user = User.find_by_id(params[:id]) 
+   if @user.destroy
+     redirect_to :action =>"user_man",:controller=>"admin"
+     flash[:notice]="delete user #{ @username} successfully "
+   end
   end
 
   protected

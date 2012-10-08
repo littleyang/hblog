@@ -1,0 +1,48 @@
+<%= render :partial=>"header" %>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid post">
+      <div class="span2">
+        <%= render :partial => helper_check_permission(current_user) %>
+      </div>
+      <div class="span10">
+        <div class="alert alert-info" style="height:18px"><p>当前时间:<%= Time.new().to_s(:long) %></p></div>
+        <% if flash[:notice] %>
+          <div class="alert alert-success"><%= flash[:notice] %></div>
+        <% end %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>用户名</th>
+              <th>email</th>
+              <th>描述</th>
+              <th>角色</th>
+              <th>注册时间</th>
+              <th>功能</th>
+            </tr>
+            <tbody>
+              <% if @users.any? %>
+                <% for user in @users %>
+                  <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.userDesc %></td>
+                    <td><%= help_show_user_role(user) %></td>
+                    <td><%= user.created_at.to_s(:short) %></td>
+                    <td>
+                      <%= link_to "查看",:action=>"modify_user",:controller=>"admin",:id=>user.id %>|
+                      <%= link_to "编辑",:action=>"modify_user",:controller=>"admin",:id=>user.id %>|
+                      <%= link_to "删除",:action=>"delete_user",:controller=>"admin",:id=>user.id %>|
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render :partial=>"footer" %>

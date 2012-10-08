@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :userDesc, :username
+  attr_accessible :userDesc, :username,:permission
   attr_accessor :login
   attr_accessible :login
 
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     end
   end
 
-
+  ROLES = [["admin","0"],["editor","1"],["viewer","2"]]
 
 
   #ivalidates_presence_of :userPassword,:userName

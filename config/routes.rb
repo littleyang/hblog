@@ -37,7 +37,11 @@ Hblog::Application.routes.draw do
 
     ##############r
     match "/u/index"=>"admin#index"
-    match "/u/useruan"=>"admin#user_man"
+    match "/u/userman"=>"admin#user_man"
+    match "/u/adduser"=>"admin#add_user"
+    match "/u/deleteuser"=>"admin#delete_user"
+    match "/u/saveuser"=>"admin#save_user"
+    match "/u/modifyuser"=>"admin#modify_user"
     match "/s/siteset"=>"admin#site_set"
     #####################################
     #

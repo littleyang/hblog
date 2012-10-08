@@ -38,4 +38,15 @@ module AdminHelper
     end
   end
 
+  def help_show_user_role(user)
+    permission = user.permission.to_i
+    if permission == 0
+      return "Administrator"
+    elsif permission == 1
+      return "Editor"
+    else
+      return "Viewer"
+    end
+  end
+
 end
