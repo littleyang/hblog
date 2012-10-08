@@ -22,7 +22,7 @@
                   <div class="tags">
                     <ul class="unstyled">
                     <% article.tags.each do |tag| %>
-                      <li><a href=""><%= tag.name %></a></li>
+                      <li><%= link_to tag.name,:action=>"view",:id=>article.id %></li>
                     <% end %>
                     </ul>
               </div>

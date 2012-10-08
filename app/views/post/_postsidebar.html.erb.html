@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/tblog/app/views/post/_postsidebar.html.erb.html</title>
+<meta name="Generator" content="Vim/7.3">
+<meta name="plugin-version" content="vim7.3_v10">
+<meta name="syntax" content="eruby">
+<meta name="settings" content="number_lines,use_css,expand_tabs">
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+.lnr { color: #ffff00; }
+.Special { color: #ff40ff; }
+.PreProc { color: #ff40ff; }
+.htmlItalic { font-style: italic; }
+.Title { color: #ff40ff; }
+.Constant { color: #ff6060; }
+.Type { color: #00ff00; }
+.Statement { color: #ffff00; }
+.Identifier { color: #00ffff; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="lnr"> 1 </span><span class="Identifier">&lt;</span><span class="Statement">div</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">= </span><span class="Constant">&quot;box&quot;</span><span class="Identifier">&gt;</span>
+<span class="lnr"> 2 </span>  <span class="Identifier">&lt;</span><span class="Statement">h2</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;title&quot;</span><span class="Identifier">&gt;</span><span class="Title">Info</span><span class="Identifier">&lt;/</span><span class="Statement">h2</span><span class="Identifier">&gt;</span>
+<span class="lnr"> 3 </span>  <span class="Identifier">&lt;</span><span class="Statement">ul</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;unstyled&quot;</span><span class="Identifier">&gt;</span>
+<span class="lnr"> 4 </span>    <span class="Identifier">&lt;</span><span class="Statement">div</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;pinfo&quot;</span><span class="Identifier">&gt;&lt;</span><span class="Statement">i</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;icon-heart&quot;</span><span class="Identifier">&gt;</span><span class="htmlItalic"> </span><span class="Identifier">&lt;/</span><span class="Statement">i</span><span class="Identifier">&gt;</span><span class="PreProc">&lt;%=</span> get_infos<span class="PreProc">%&gt;</span><span class="Identifier">&lt;/</span><span class="Statement">div</span><span class="Identifier">&gt;</span>
+<span class="lnr"> 5 </span>  <span class="Identifier">&lt;/</span><span class="Statement">ul</span><span class="Identifier">&gt;</span>
+<span class="lnr"> 6 </span><span class="Identifier">&lt;/</span><span class="Statement">div</span><span class="Identifier">&gt;</span>
+<span class="lnr"> 7 </span><span class="Identifier">&lt;</span><span class="Statement">div</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">= </span><span class="Constant">&quot;box&quot;</span><span class="Identifier">&gt;</span>
+<span class="lnr"> 8 </span>  <span class="Identifier">&lt;</span><span class="Statement">h2</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;title&quot;</span><span class="Identifier">&gt;</span><span class="Title">博客分类</span><span class="Identifier">&lt;/</span><span class="Statement">h2</span><span class="Identifier">&gt;</span>
+<span class="lnr"> 9 </span>  <span class="Identifier">&lt;</span><span class="Statement">ul</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;unstyled&quot;</span><span class="Identifier">&gt;</span>
+<span class="lnr">10 </span>    <span class="PreProc">&lt;%</span> <span class="Statement">if</span> <span class="Identifier">@categories</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">11 </span>      <span class="PreProc">&lt;%</span> <span class="Statement">for</span> category <span class="Statement">in</span> <span class="Identifier">@categories</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">12 </span>        <span class="Identifier">&lt;</span><span class="Statement">li</span><span class="Identifier">&gt;&lt;</span><span class="Statement">i</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;icon-book&quot;</span><span class="Identifier">&gt;</span><span class="Identifier">&lt;/</span><span class="Statement">i</span><span class="Identifier">&gt;</span> <span class="PreProc">&lt;%=</span> <span class="Identifier">link_to</span> category.categoryName,<span class="Constant">:action</span>=&gt;<span class="Special">&quot;</span><span class="Constant">list_with_category</span><span class="Special">&quot;</span>,<span class="Constant">:id</span>=&gt;category.id <span class="PreProc">%&gt;</span><span class="Identifier">&lt;/</span><span class="Statement">li</span><span class="Identifier">&gt;</span>
+<span class="lnr">13 </span>      <span class="PreProc">&lt;%</span> <span class="Statement">end</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">14 </span>    <span class="PreProc">&lt;%</span> <span class="Statement">end</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">15 </span>  <span class="Identifier">&lt;/</span><span class="Statement">ul</span><span class="Identifier">&gt;</span>
+<span class="lnr">16 </span><span class="Identifier">&lt;/</span><span class="Statement">div</span><span class="Identifier">&gt;</span>
+<span class="lnr">17 </span><span class="Identifier">&lt;</span><span class="Statement">div</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;box tags&quot;</span><span class="Identifier">&gt;</span>
+<span class="lnr">18 </span>  <span class="Identifier">&lt;</span><span class="Statement">h2</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;title&quot;</span><span class="Identifier">&gt;</span><span class="Title">标签</span><span class="Identifier">&lt;/</span><span class="Statement">h2</span><span class="Identifier">&gt;</span>
+<span class="lnr">19 </span>  <span class="Identifier">&lt;</span><span class="Statement">ul</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;unstyled&quot;</span><span class="Identifier">&gt;</span>
+<span class="lnr">20 </span>    <span class="PreProc">&lt;%</span> <span class="Statement">if</span> <span class="Identifier">@tags</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">21 </span>      <span class="PreProc">&lt;%</span> <span class="Statement">for</span> <span class="Identifier">t</span> <span class="Statement">in</span> <span class="Identifier">@tags</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">22 </span>        <span class="Identifier">&lt;</span><span class="Statement">li</span><span class="Identifier">&gt;</span><span class="PreProc">&lt;%=</span> <span class="Identifier">link_to</span> <span class="Identifier">t</span>.name,<span class="Constant">:action</span>=&gt;<span class="Special">&quot;</span><span class="Constant">list_with_tag</span><span class="Special">&quot;</span>,<span class="Constant">:tag</span>=&gt;<span class="Identifier">t</span>.name <span class="PreProc">%&gt;</span><span class="Identifier">&lt;</span><span class="Statement">li</span><span class="Identifier">&gt;</span>
+<span class="lnr">23 </span>      <span class="PreProc">&lt;%</span> <span class="Statement">end</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">24 </span>    <span class="PreProc">&lt;%</span> <span class="Statement">end</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">25 </span>  <span class="Identifier">&lt;/</span><span class="Statement">ul</span><span class="Identifier">&gt;</span>
+<span class="lnr">26 </span><span class="Identifier">&lt;/</span><span class="Statement">div</span><span class="Identifier">&gt;</span>
+<span class="lnr">27 </span><span class="Identifier">&lt;</span><span class="Statement">div</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;box&quot;</span><span class="Identifier">&gt;</span>
+<span class="lnr">28 </span>  <span class="Identifier">&lt;</span><span class="Statement">h2</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;title&quot;</span><span class="Identifier">&gt;</span><span class="Title">近期评论</span><span class="Identifier">&lt;/</span><span class="Statement">h2</span><span class="Identifier">&gt;</span>
+<span class="lnr">29 </span>  <span class="Identifier">&lt;</span><span class="Statement">ul</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;unstyled&quot;</span><span class="Identifier">&gt;</span>
+<span class="lnr">30 </span>    <span class="PreProc">&lt;%</span> <span class="Statement">if</span> <span class="Identifier">@comments</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">31 </span>      <span class="PreProc">&lt;%</span> <span class="Statement">for</span> comment <span class="Statement">in</span> <span class="Identifier">@comments</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">32 </span>        <span class="Identifier">&lt;</span><span class="Statement">li</span><span class="Identifier">&gt;&lt;</span><span class="Statement">i</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;icon-pencil&quot;</span><span class="Identifier">&gt;</span><span class="Identifier">&lt;/</span><span class="Statement">i</span><span class="Identifier">&gt;</span> <span class="PreProc">&lt;%=</span> comment.nikename <span class="PreProc">%&gt;</span>评论了<span class="PreProc">&lt;%=</span> <span class="Identifier">link_to</span> <span class="Identifier">truncate</span>((comment.article).title,<span class="Constant">:length</span>=&gt;<span class="Constant">20</span>),<span class="Constant">:action</span>=&gt;<span class="Special">&quot;</span><span class="Constant">view</span><span class="Special">&quot;</span>,<span class="Constant">:id</span>=&gt;(comment.article).id <span class="PreProc">%&gt;</span><span class="Identifier">&lt;/</span><span class="Statement">li</span><span class="Identifier">&gt;</span>
+<span class="lnr">33 </span>      <span class="PreProc">&lt;%</span> <span class="Statement">end</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">34 </span>    <span class="PreProc">&lt;%</span> <span class="Statement">end</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">35 </span><span class="Identifier">&lt;/</span><span class="Statement">ul</span><span class="Identifier">&gt;</span>
+<span class="lnr">36 </span><span class="Identifier">&lt;/</span><span class="Statement">div</span><span class="Identifier">&gt;</span>
+<span class="lnr">37 </span><span class="Identifier">&lt;</span><span class="Statement">div</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;box&quot;</span><span class="Identifier">&gt;</span>
+<span class="lnr">38 </span>  <span class="Identifier">&lt;</span><span class="Statement">h2</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;title&quot;</span><span class="Identifier">&gt;</span><span class="Title">我的连接</span><span class="Identifier">&lt;/</span><span class="Statement">h2</span><span class="Identifier">&gt;</span>
+<span class="lnr">39 </span>  <span class="Identifier">&lt;</span><span class="Statement">ul</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;unstyled&quot;</span><span class="Identifier">&gt;</span>
+<span class="lnr">40 </span>    <span class="PreProc">&lt;%</span> <span class="Statement">if</span> <span class="Identifier">@links</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">41 </span>      <span class="PreProc">&lt;%</span> <span class="Statement">for</span> link <span class="Statement">in</span> <span class="Identifier">@links</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">42 </span>        <span class="Identifier">&lt;</span><span class="Statement">li</span><span class="Identifier">&gt;&lt;</span><span class="Statement">a</span><span class="Identifier"> </span><span class="Type">href</span><span class="Identifier">=</span><span class="Constant">&quot;</span><span class="PreProc">&lt;%=</span> link.url <span class="PreProc">%&gt;</span><span class="Constant">&quot;</span><span class="Identifier">&gt;&lt;</span><span class="Statement">i</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;icon-home&quot;</span><span class="Identifier">&gt;</span><span class="Identifier">&lt;/</span><span class="Statement">i</span><span class="Identifier">&gt;</span><span class="PreProc">&lt;%=</span> link.title <span class="PreProc">%&gt;</span><span class="Identifier">&lt;/</span><span class="Statement">a</span><span class="Identifier">&gt;&lt;/</span><span class="Statement">li</span><span class="Identifier">&gt;</span>
+<span class="lnr">43 </span>        <span class="PreProc">&lt;%</span> <span class="Statement">end</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">44 </span>      <span class="PreProc">&lt;%</span> <span class="Statement">end</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">45 </span><span class="Identifier">&lt;/</span><span class="Statement">ul</span><span class="Identifier">&gt;</span>
+<span class="lnr">46 </span><span class="Identifier">&lt;/</span><span class="Statement">div</span><span class="Identifier">&gt;</span>
+<span class="lnr">47 </span><span class="Identifier">&lt;</span><span class="Statement">div</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;box&quot;</span><span class="Identifier">&gt;</span>
+<span class="lnr">48 </span>  <span class="Identifier">&lt;</span><span class="Statement">h2</span><span class="Identifier"> </span><span class="Type">class</span><span class="Identifier">=</span><span class="Constant">&quot;title&quot;</span><span class="Identifier">&gt;</span><span class="Title">日历</span><span class="Identifier">&lt;/</span><span class="Statement">h2</span><span class="Identifier">&gt;</span>
+<span class="lnr">49 </span>  <span class="PreProc">&lt;%=</span><span class="Identifier">raw</span> calendar(<span class="Constant">:year</span>=&gt;(<span class="Type">Time</span>.zone || <span class="Type">Time</span>).now.year, <span class="Constant">:month</span> =&gt;(<span class="Type">Time</span>.zone || <span class="Type">Time</span>).now.month, <span class="Constant">:table_class</span> =&gt; <span class="Special">&quot;</span><span class="Constant">calendar</span><span class="Special">&quot;</span>) <span class="PreProc">%&gt;</span>
+<span class="lnr">50 </span><span class="Identifier">&lt;/</span><span class="Statement">div</span><span class="Identifier">&gt;</span>
+<span class="lnr">51 </span>
+</pre>
+</body>
+</html>
